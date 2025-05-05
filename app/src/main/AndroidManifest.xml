@@ -31,6 +31,7 @@
             android:name=".products.ProductListActivity"
             android:exported="false"/>
 
+
         <activity
             android:name=".product.ProductDetailActivity"
             android:exported="false"/>
