@@ -6,4 +6,12 @@
     </style>
 
     <style name="Theme.AdvMasterDetail" parent="Base.Theme.AdvMasterDetail" />
+
+    <style name="Theme.AdvMasterDetail.Login" parent="Theme.AppCompat.Light">
+    <item name="colorPrimary">#6E64A6</item> <!-- Morado -->
+        <item name="colorPrimaryVariant">#6E64A6</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
+    </style>
+
 </resources>
