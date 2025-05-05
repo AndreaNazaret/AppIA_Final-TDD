@@ -23,8 +23,8 @@ public class CategoryListAdapter
 
   public CategoryListAdapter(View.OnClickListener listener) {
 
-    itemList = new ArrayList();
-    clickListener = listener;
+    itemList = new ArrayList(); //Necesita los datos
+    clickListener = listener; //Listener para cuando se hace click en un elemento
   }
 
   public void addItem(CategoryItem item){
@@ -37,6 +37,7 @@ public class CategoryListAdapter
     notifyDataSetChanged();
   }
 
+  //Actualiza con los nuevos datos
   public void setItems(List<CategoryItem> items){
     itemList = items;
     notifyDataSetChanged();
@@ -55,9 +56,11 @@ public class CategoryListAdapter
     return new ViewHolder(view);
   }
 
+  //Cada vez que se cree una celda asociale un "tag" (etiqueta) para identificarla unicamente
+
   @Override
   public void onBindViewHolder(final ViewHolder holder, int position) {
-    holder.itemView.setTag(itemList.get(position));
+    holder.itemView.setTag(itemList.get(position)); //Se asocia a la categoria
     holder.itemView.setOnClickListener(clickListener);
 
     holder.contentView.setText(itemList.get(position).content);

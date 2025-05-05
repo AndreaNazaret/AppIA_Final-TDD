@@ -22,10 +22,10 @@ public class CategoryListModel implements CategoryListContract.Model {
 
     Log.e(TAG, "fetchCategoryListData()");
 
-
+    //Si es true cada vez que se ejecuta la aplicación se accede al JSON para crear nuevamente la base de datos
     repository.loadCatalog(true, error -> {
       if (!error) {
-        repository.getCategoryList(callback);
+        repository.getCategoryList(callback); //Se le piden los datos al repositorio
       }
     });
 

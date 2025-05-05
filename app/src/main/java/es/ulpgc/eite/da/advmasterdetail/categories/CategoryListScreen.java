@@ -20,7 +20,7 @@ public class CategoryListScreen {
     CategoryListContract.Presenter presenter=new CategoryListPresenter(mediator);
 
     RepositoryContract repository = CatalogRepository.getInstance(context.get());
-    CategoryListModel model = new CategoryListModel(repository);
+    CategoryListModel model = new CategoryListModel(repository); //Se le pasa el repositorio al modelo
 
     presenter.injectView(new WeakReference<>(view));
     presenter.injectModel(model);

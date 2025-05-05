@@ -11,7 +11,7 @@ import java.util.List;
 
 import es.ulpgc.eite.da.advmasterdetail.data.ProductItem;
 
-
+//El Dao de la tabla Producto refleja las operaciones que vamos ha hacer con la tabla
 @Dao
 public interface ProductDao {
 
@@ -31,6 +31,7 @@ public interface ProductDao {
   @Query("SELECT * FROM products WHERE id = :id LIMIT 1")
   ProductItem loadProduct(int id);
 
+  //Dame los productos de una categoria en concreto segun el ID de esta
   @Query("SELECT * FROM products WHERE category_id=:categoryId")
   List<ProductItem> loadProducts(final int categoryId);
 }

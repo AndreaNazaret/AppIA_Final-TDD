@@ -9,19 +9,19 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-
+//Una fila es una Entity -> Aquí se especifican las columnas de una tabla, en este caso; ID, content y details
 @Entity(tableName = "categories")
 public class CategoryItem {
 
   @PrimaryKey
-  public int id;
+  public int id; //Identificador de cada fila
 
-  public String content;
-  public String details;
+  public String content; //Nombre de la categoria
+  public String details; //Descripción de la categoria
 
-  @Ignore
+  @Ignore //No se puede meter un array en un elemento de la tabla de la BD
   @SerializedName("products")
-  public List<ProductItem> items;
+  public List<ProductItem> items;  //Llama a al otra tabla de productas asociada a esa categoria
 
   @Override
   public String toString() {

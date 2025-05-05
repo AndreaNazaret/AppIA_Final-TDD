@@ -48,6 +48,7 @@ public class CatalogRepository implements RepositoryContract {
     return INSTANCE;
   }
 
+  // Metodo para crear la base de datos
   private CatalogRepository(Context context) {
     this.context = context;
 
@@ -57,15 +58,19 @@ public class CatalogRepository implements RepositoryContract {
 
   }
 
+  //El repositorio inicia una tarea
+
   @Override
   public void loadCatalog(
       final boolean clearFirst, final FetchCatalogDataCallback callback) {
 
+    //1º se asegura se si clear first esta activo para saber si borra todo o no
     AsyncTask.execute(() -> {
       if(clearFirst) {
         database.clearAllTables();
       }
 
+      //Carga del JSON la BD
       boolean error = false;
       if(getCategoryDao().loadCategories().size() == 0 ) {
         error = !loadCatalogFromJSON(loadJSONFromAsset());
@@ -228,6 +233,7 @@ public class CatalogRepository implements RepositoryContract {
   }
 
 
+  //Se carga el JSON en memoria como un String de texto plano
 
   private String loadJSONFromAsset( )  {
 

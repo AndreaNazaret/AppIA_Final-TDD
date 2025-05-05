@@ -54,7 +54,7 @@ public class CategoryListActivity
   private void initCategoryListContainer() {
 
     listAdapter = new CategoryListAdapter(view -> {
-      CategoryItem item = (CategoryItem) view.getTag();
+      CategoryItem item = (CategoryItem) view.getTag(); //Se le pasan los datos
       presenter.selectedCategoryData(item);
     });
 
@@ -79,6 +79,7 @@ public class CategoryListActivity
   public void displayCategoryListData(final CategoryListViewModel viewModel) {
     Log.e(TAG, "displayCategoryListData()");
 
+    //Para actualizar el recyclerView hay q pasarle los datos al Adapter
     runOnUiThread(() -> {
 
       // deal with the data
