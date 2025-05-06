@@ -7,4 +7,14 @@
     <string name="title_product_detail">Product Detail</string>
     <string name="item_content">Item Content</string>
     <string name="item_details">Item Details</string>
+
+    <!-- Pantalla Login -->
+    <string name="login_button_text">INICIAR SESIÓN</string>
+    <string name="guest_button_text">ENTRAR COMO INVITADO</string>
+    <string name="register_button_text">REGISTRARTE</string>
+
+    <string name="email_hint">Correo</string>
+    <string name="password_hint">Contraseña</string>
+    <string name="no_account_text">Si no tienes cuenta...</string>
+
 </resources>
