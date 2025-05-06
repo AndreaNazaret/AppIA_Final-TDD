@@ -29,8 +29,17 @@ public class CategoryListActivity
     setContentView(R.layout.activity_category_list);
     setTitle(R.string.title_category_list);
 
+    Log.e(TAG, "CategoryListActivity onCreate INICIADO");
+
     // do the setup
     CategoryListScreen.configure(this);
+
+    if (presenter == null) {
+      Log.e(TAG, "ERROR: presenter no fue inyectado correctamente");
+      finish(); // Detiene la actividad para evitar crash
+      return;
+    }
+
 
     // do some work
     initCategoryListContainer();

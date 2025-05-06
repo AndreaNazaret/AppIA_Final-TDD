@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 
 import es.ulpgc.eite.da.advmasterdetail.R;
+import es.ulpgc.eite.da.advmasterdetail.categories.CategoryListActivity;
 
 public class LoginActivity
     extends AppCompatActivity implements LoginContract.View {
@@ -20,15 +21,17 @@ public class LoginActivity
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-
     // Cambiar título
     if (getSupportActionBar() != null) {
       getSupportActionBar().setTitle("Login");
     }
 
     setContentView(R.layout.activity_login);
-
     LoginScreen.configure(this);
+
+    findViewById(R.id.guestButton).setOnClickListener(view ->
+            presenter.onGuestButtonClicked()
+    );
 
     // init or update the state
     if (savedInstanceState == null) {
@@ -87,11 +90,16 @@ public class LoginActivity
 
 
   @Override
-  public void navigateToNextScreen() {
+  public void navigateToCategoryScreen() {
     // Log.e(TAG, "navigateToNextScreen()");
 
-    Intent intent = new Intent(this, LoginActivity.class);
-    startActivity(intent);
+    try {
+      Intent intent = new Intent(this, CategoryListActivity.class);
+      startActivity(intent);
+      Log.e(TAG, "Intent lanzado correctamente");
+    } catch (Exception e) {
+      Log.e(TAG, "ERROR al lanzar CategoryListActivity: " + e.getMessage(), e);
+    }
   }
 
   @Override

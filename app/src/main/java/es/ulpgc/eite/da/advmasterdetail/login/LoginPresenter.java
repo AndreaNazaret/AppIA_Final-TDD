@@ -67,9 +67,17 @@ public class LoginPresenter implements LoginContract.Presenter {
     }
 
 
+    /*BOTONES*/
+
+    @Override
+    public void onGuestButtonClicked() {
+        view.get().navigateToCategoryScreen();
+    }
 
 
-  /*
+
+
+    /*
   private void resetScreenState() {
     mediator.resetLoginScreenState();
   }

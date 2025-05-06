@@ -9,7 +9,7 @@ public interface LoginContract {
 
         void onRefreshViewWithUpdatedData(LoginViewModel viewModel);
 
-        void navigateToNextScreen();
+        void navigateToCategoryScreen();
 
         void navigateToPreviousScreen();
     }
@@ -30,6 +30,9 @@ public interface LoginContract {
         void onPauseCalled();
 
         void onDestroyCalled();
+
+        void onGuestButtonClicked();
+
     }
 
     interface Model {

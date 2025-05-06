@@ -29,6 +29,10 @@ public class CategoryListPresenter implements CategoryListContract.Presenter {
     // Log.e(TAG, "onCreateCalled");
 
     state = new CategoryListState(); //Crea el estado
+    if (state == null) {
+      state = new CategoryListState();
+      mediator.setCategoryListState(state);
+    }
   }
 
   @Override
@@ -53,6 +57,7 @@ public class CategoryListPresenter implements CategoryListContract.Presenter {
     //De modo asincrono se solicita al modelo los datos
     // call the model
     model.fetchCategoryListData(categories -> {
+
       state.categories = categories;
 
       view.get().displayCategoryListData(state);

@@ -52,9 +52,9 @@ public class CatalogRepository implements RepositoryContract {
   private CatalogRepository(Context context) {
     this.context = context;
 
-    database = Room.databaseBuilder(
-        context, CatalogDatabase.class, DB_FILE
-    ).build();
+    database = Room.databaseBuilder(context, CatalogDatabase.class, DB_FILE)
+            .fallbackToDestructiveMigration() //Elimina ("destruye") la base de datos existente y la vuelve a crear desde cero con la nueva estructura.
+            .build();
 
   }
 
