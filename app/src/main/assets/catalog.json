@@ -138,5 +138,38 @@
 
       ]
     }
+  ],
+
+  "Users": [
+    {
+      "ID": 1,
+      "firstName": "Daniela",
+      "lastName": "Herrera",
+      "email": "daniela.herrera@example.com",
+      "password": "laura1234"
+    },
+    {
+      "ID": 2,
+      "firstName": "Andrea",
+      "lastName": "gonzalez",
+      "email": "andrea.gonzalez@example.com",
+      "password": "andrew5678"
+    },
+    {
+      "ID": 3,
+      "firstName": "Carlos",
+      "lastName": "Moreno",
+      "email": "carlos.moreno@example.com",
+      "password": "sophie2025"
+    },
+    {
+      "ID": 4,
+      "firstName": "Emanuel",
+      "lastName": "Garcia",
+      "email": "emanuel.garcia@example.com",
+      "password": "sophie2025"
+    }
   ]
 }
+
+
