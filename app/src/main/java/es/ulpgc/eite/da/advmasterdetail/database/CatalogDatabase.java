@@ -9,7 +9,7 @@ import es.ulpgc.eite.da.advmasterdetail.data.UsersItem;
 
 // Accesos a tablas en este caso observamos que solo hay dos (Cada Dao es una tabla)
 //CategoryItem y ProductItem son las columnas de cada tabla
-@Database(entities = {CategoryItem.class, ProductItem.class, UsersItem.class}, version = 2)
+@Database(entities = {CategoryItem.class, ProductItem.class, UsersItem.class}, version = 3)
 public abstract class CatalogDatabase extends RoomDatabase {
 
   public abstract CategoryDao categoryDao();

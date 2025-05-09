@@ -14,7 +14,7 @@ import java.util.List;
 @Entity(tableName = "users")
 public class UsersItem {
 
-  @PrimaryKey
+  @PrimaryKey(autoGenerate = true)
   public int id; //Identificador de cada fila
 
   public String firstName; //Nombre

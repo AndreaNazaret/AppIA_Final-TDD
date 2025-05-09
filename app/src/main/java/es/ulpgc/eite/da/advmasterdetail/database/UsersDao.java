@@ -19,7 +19,7 @@ public interface UsersDao {
 //Insertar un usuario
 // "OnConflictStrategy" -> Señala que si ya existe se borre y añada la nueva
   @Insert(onConflict = OnConflictStrategy.REPLACE)
-  void insertUsers(UsersItem users);
+  void insertUsers(List<UsersItem> users);
 
 
   //Actualizar un usuario

@@ -61,26 +61,40 @@ public class CatalogRepository implements RepositoryContract {
 
   //El repositorio inicia una tarea
 
+
+  private boolean isCatalogLoaded = false;
+
   @Override
   public void loadCatalog(
       final boolean clearFirst, final FetchCatalogDataCallback callback) {
 
     //1º se asegura se si clear first esta activo para saber si borra todo o no
+    Log.d(TAG, "loadCatalog called. clearFirst=" + clearFirst);
+
+    if (isCatalogLoaded && !clearFirst) {
+      Log.d(TAG, "Catalog already loaded, skipping reload.");
+      if (callback != null) callback.onCatalogDataFetched(false);
+      return;
+    }
+
     AsyncTask.execute(() -> {
       if(clearFirst) {
+        Log.d(TAG, "Clearing database and resetting ID sequence...");
         database.clearAllTables();
+        database.getOpenHelper().getWritableDatabase().execSQL("DELETE FROM sqlite_sequence WHERE name='users';"); //Nos permite reiniciar los ID automáticos cuando se regenera la tabla
+        isCatalogLoaded = false;
       }
 
       //Carga del JSON la BD
       boolean error = false;
-      if(getCategoryDao().loadCategories().size() == 0 ) {
+      if (database.categoryDao().loadCategories().isEmpty()) {
         error = !loadCatalogFromJSON(loadJSONFromAsset());
+        isCatalogLoaded = !error;
+      } else {
+        isCatalogLoaded = true;
       }
-      Log.d(TAG, "JSON Load Success: " + error); //Comprobar si se ha cargado el JSON
 
-      if(callback != null) {
-        callback.onCatalogDataFetched(error);
-      }
+      if (callback != null) callback.onCatalogDataFetched(error);
     });
 
   }
@@ -243,9 +257,9 @@ public class CatalogRepository implements RepositoryContract {
                   gson.fromJson(usersArray.toString(), UsersItem[].class)
           );
 
-          for (UsersItem user : users) {
+
             try {
-              getUsersDao().insertUsers(user);
+              getUsersDao().insertUsers(users);
               Log.d(TAG, "User Inserted: " + users.size());
               // Verificar qué usuarios hay en la base de datos después de la inserción
               List<UsersItem> allUsers = getUsersDao().loadUsers();
@@ -253,9 +267,9 @@ public class CatalogRepository implements RepositoryContract {
                 Log.d(TAG, "User in DB -> ID: " + u.id + ", Email: " + u.email + ", Password: " + u.password);
               }
             } catch (Exception e) {
-              Log.e(TAG, "Error inserting user: " + user.email, e);
+              Log.e(TAG, "Error inserting user.");
             }
-          }
+
         }
       }
 

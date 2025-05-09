@@ -48,7 +48,7 @@ public class LoginPresenter implements LoginContract.Presenter {
     @Override
     public void loadInitialData() {
         Log.d(TAG, "Loading initial data from JSON...");
-        model.loadCatalogData(error -> {
+        model.loadCatalogData( error -> {
             if (!error) {
                 Log.d(TAG, "Initial data loaded successfully.");
             } else {
@@ -56,7 +56,6 @@ public class LoginPresenter implements LoginContract.Presenter {
             }
         });
     }
-
 
 
     @Override

@@ -142,32 +142,34 @@
 
   "Users": [
     {
-      "ID": 1,
       "firstName": "Daniela",
       "lastName": "Herrera",
       "email": "daniela@example.com",
       "password": "daniela1234"
     },
     {
-      "ID": 2,
       "firstName": "Andrea",
       "lastName": "gonzalez",
       "email": "andrea.gonzalez@example.com",
       "password": "andrea5678"
     },
     {
-      "ID": 3,
       "firstName": "Carlos",
       "lastName": "Moreno",
       "email": "carlos.moreno@example.com",
       "password": "carlos1234"
     },
     {
-      "ID": 4,
       "firstName": "Emanuel",
       "lastName": "Garcia",
       "email": "emanuel.garcia@example.com",
       "password": "emanuel1234"
+    },
+    {
+      "firstName": "Lucía",
+      "lastName": "Perez",
+      "email": "lucia@example.com",
+      "password": "lucia1234"
     }
   ]
 }
