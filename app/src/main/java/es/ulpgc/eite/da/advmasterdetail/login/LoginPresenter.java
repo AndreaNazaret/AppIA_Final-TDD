@@ -74,6 +74,22 @@ public class LoginPresenter implements LoginContract.Presenter {
         view.get().navigateToCategoryScreen();
     }
 
+    @Override
+    public void onLoginButtonClicked() {
+        String email = view.get().getEmailInput();
+        String password = view.get().getPasswordInput();
+
+        model.verifyUser(email, password, success -> {
+            if (success) {
+                view.get().navigateToCategoryScreen();
+            } else {
+                new android.os.Handler(android.os.Looper.getMainLooper()).post(() ->
+                        view.get().showLoginError()
+                );
+            }
+        });
+    }
+
 
 
 

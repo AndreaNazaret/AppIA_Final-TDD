@@ -83,6 +83,23 @@ public class CatalogRepository implements RepositoryContract {
 
   }
 
+  //Metodo verificar usuario
+  @Override
+  public void verifyUser(String email, String password, VerifyUserCallback callback) {
+    AsyncTask.execute(() -> {
+      try {
+        UsersItem user = database.usersDao().findUserByEmail(email);
+        boolean isValid = (user != null && user.password != null && user.password.equals(password));
+        callback.onVerificationResult(isValid);
+      } catch (Exception e) {
+        Log.e(TAG, "Error en verifyUser()", e);
+        callback.onVerificationResult(false);
+      }
+    });
+  }
+
+
+
   @Override
   public void getProductList(
       final CategoryItem category, final GetProductListCallback callback) {

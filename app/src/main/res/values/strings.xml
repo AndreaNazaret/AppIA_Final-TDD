@@ -17,4 +17,7 @@
     <string name="password_hint">Contraseña</string>
     <string name="no_account_text">Si no tienes cuenta...</string>
 
+    <string name="login_error_message">Correo o contraseña incorrectos</string>
+
+
 </resources>

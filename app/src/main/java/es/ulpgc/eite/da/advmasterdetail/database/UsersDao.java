@@ -37,4 +37,9 @@ public interface UsersDao {
   //Buscar un usuario por su ID
   @Query("SELECT * FROM users WHERE id = :id LIMIT 1")
   UsersItem loadUsers(int id);
+
+  //Encontrar usuario por email
+  @Query("SELECT * FROM users WHERE email = :email LIMIT 1")
+  UsersItem findUserByEmail(String email);
+
 }

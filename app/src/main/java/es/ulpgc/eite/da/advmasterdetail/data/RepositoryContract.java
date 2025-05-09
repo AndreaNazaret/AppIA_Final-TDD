@@ -4,6 +4,13 @@ import java.util.List;
 
 public interface RepositoryContract {
 
+  //Interfaz comprobar usuario
+
+  interface VerifyUserCallback {
+    void onVerificationResult(boolean success);
+  }
+  void verifyUser(String email, String password, VerifyUserCallback callback);
+
   interface FetchCatalogDataCallback {
     void onCatalogDataFetched(boolean error);
   }

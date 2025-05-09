@@ -7,6 +7,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import es.ulpgc.eite.da.advmasterdetail.R;
 import es.ulpgc.eite.da.advmasterdetail.categories.CategoryListActivity;
@@ -29,9 +30,8 @@ public class LoginActivity
     setContentView(R.layout.activity_login);
     LoginScreen.configure(this);
 
-    findViewById(R.id.guestButton).setOnClickListener(view ->
-            presenter.onGuestButtonClicked()
-    );
+    findViewById(R.id.guestButton).setOnClickListener(view -> presenter.onGuestButtonClicked());
+    findViewById(R.id.loginButton).setOnClickListener(view -> presenter.onLoginButtonClicked());
 
     // init or update the state
     if (savedInstanceState == null) {
@@ -41,6 +41,25 @@ public class LoginActivity
       presenter.onRecreateCalled();
     }
   }
+
+  //Obtener campos de texto
+
+  public String getEmailInput() {
+    TextView emailText = findViewById(R.id.emailInput);
+    return emailText.getText().toString().trim();
+  }
+
+  public String getPasswordInput() {
+    TextView passwordText = findViewById(R.id.passwordInput);
+    return passwordText.getText().toString();
+  }
+
+  @Override
+  public void showLoginError() {
+    String message = getString(R.string.login_error_message);
+    Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+  }
+
 
   @Override
   protected void onResume() {
