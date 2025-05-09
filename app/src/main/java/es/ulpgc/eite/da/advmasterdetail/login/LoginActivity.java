@@ -22,16 +22,25 @@ public class LoginActivity
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    // Cambiar título
+    setContentView(R.layout.activity_login);
+    // Cambiar título de la barra
     if (getSupportActionBar() != null) {
       getSupportActionBar().setTitle("Login");
     }
 
-    setContentView(R.layout.activity_login);
+    Log.e(TAG, "UsersActivity onCreate INICIADO");
+
     LoginScreen.configure(this);
 
-    findViewById(R.id.guestButton).setOnClickListener(view -> presenter.onGuestButtonClicked());
-    findViewById(R.id.loginButton).setOnClickListener(view -> presenter.onLoginButtonClicked());
+
+    findViewById(R.id.loginButton).setOnClickListener(view -> {
+      String email = getEmailInput();
+      String password = getPasswordInput();
+      Log.d(TAG, "Datos introducidos: Email=" + email + ", Password=" + password);
+      presenter.onLoginButtonClicked();
+    });
+
+    findViewById(R.id.guestButton).setOnClickListener(view ->presenter.onGuestButtonClicked());
 
     // init or update the state
     if (savedInstanceState == null) {
@@ -42,8 +51,8 @@ public class LoginActivity
     }
   }
 
-  //Obtener campos de texto
 
+  //Obtener campos de texto
   public String getEmailInput() {
     TextView emailText = findViewById(R.id.emailInput);
     return emailText.getText().toString().trim();
@@ -68,7 +77,7 @@ public class LoginActivity
     // Log.e(TAG, "onResume()");
 
     // load the data
-    presenter.onResumeCalled();
+    presenter.loadInitialData();
   }
 
   @SuppressWarnings("deprecation")

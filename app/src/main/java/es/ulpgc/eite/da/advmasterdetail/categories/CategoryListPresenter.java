@@ -29,10 +29,7 @@ public class CategoryListPresenter implements CategoryListContract.Presenter {
     // Log.e(TAG, "onCreateCalled");
 
     state = new CategoryListState(); //Crea el estado
-    if (state == null) {
-      state = new CategoryListState();
-      mediator.setCategoryListState(state);
-    }
+
   }
 
   @Override

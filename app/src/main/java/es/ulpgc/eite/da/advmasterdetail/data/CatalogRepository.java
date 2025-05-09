@@ -23,6 +23,7 @@ import java.util.List;
 import es.ulpgc.eite.da.advmasterdetail.database.CatalogDatabase;
 import es.ulpgc.eite.da.advmasterdetail.database.CategoryDao;
 import es.ulpgc.eite.da.advmasterdetail.database.ProductDao;
+import es.ulpgc.eite.da.advmasterdetail.database.UsersDao;
 
 
 public class CatalogRepository implements RepositoryContract {
@@ -75,6 +76,7 @@ public class CatalogRepository implements RepositoryContract {
       if(getCategoryDao().loadCategories().size() == 0 ) {
         error = !loadCatalogFromJSON(loadJSONFromAsset());
       }
+      Log.d(TAG, "JSON Load Success: " + error); //Comprobar si se ha cargado el JSON
 
       if(callback != null) {
         callback.onCatalogDataFetched(error);
@@ -83,20 +85,6 @@ public class CatalogRepository implements RepositoryContract {
 
   }
 
-  //Metodo verificar usuario
-  @Override
-  public void verifyUser(String email, String password, VerifyUserCallback callback) {
-    AsyncTask.execute(() -> {
-      try {
-        UsersItem user = database.usersDao().findUserByEmail(email);
-        boolean isValid = (user != null && user.password != null && user.password.equals(password));
-        callback.onVerificationResult(isValid);
-      } catch (Exception e) {
-        Log.e(TAG, "Error en verifyUser()", e);
-        callback.onVerificationResult(false);
-      }
-    });
-  }
 
 
 
@@ -210,6 +198,10 @@ public class CatalogRepository implements RepositoryContract {
     return database.productDao();
   }
 
+  private UsersDao getUsersDao() {
+    return database.usersDao();
+  }
+
 
   private boolean loadCatalogFromJSON(String json) {
     Log.e(TAG, "loadCatalogFromJSON()");
@@ -218,36 +210,66 @@ public class CatalogRepository implements RepositoryContract {
     Gson gson = gsonBuilder.create();
 
     try {
-
       JSONObject jsonObject = new JSONObject(json);
-      JSONArray jsonArray = jsonObject.getJSONArray(JSON_ROOT);
 
-      if (jsonArray.length() > 0) {
+      // Cargar Categorías
+      if (jsonObject.has(JSON_ROOT)) {
+        JSONArray jsonArray = jsonObject.getJSONArray(JSON_ROOT);
 
-        final List<CategoryItem> categories = Arrays.asList(
-            gson.fromJson(jsonArray.toString(), CategoryItem[].class)
-        );
+        if (jsonArray.length() > 0) {
+          final List<CategoryItem> categories = Arrays.asList(
+                  gson.fromJson(jsonArray.toString(), CategoryItem[].class)
+          );
 
-        for (CategoryItem category: categories) {
-          getCategoryDao().insertCategory(category);
-        }
+          for (CategoryItem category : categories) {
+            getCategoryDao().insertCategory(category);
+          }
 
-        for (CategoryItem category: categories) {
-          for (ProductItem product: category.items) {
-            product.categoryId = category.id;
-            getProductDao().insertProduct(product);
+          for (CategoryItem category : categories) {
+            for (ProductItem product : category.items) {
+              product.categoryId = category.id;
+              getProductDao().insertProduct(product);
+            }
           }
         }
-
-        return true;
       }
 
+      // Cargar Usuarios
+      if (jsonObject.has("Users")) {
+        JSONArray usersArray = jsonObject.getJSONArray("Users");
+
+        if (usersArray.length() > 0) {
+          final List<UsersItem> users = Arrays.asList(
+                  gson.fromJson(usersArray.toString(), UsersItem[].class)
+          );
+
+          for (UsersItem user : users) {
+            try {
+              getUsersDao().insertUsers(user);
+              Log.d(TAG, "User Inserted: " + users.size());
+              // Verificar qué usuarios hay en la base de datos después de la inserción
+              List<UsersItem> allUsers = getUsersDao().loadUsers();
+              for (UsersItem u : allUsers) {
+                Log.d(TAG, "User in DB -> ID: " + u.id + ", Email: " + u.email + ", Password: " + u.password);
+              }
+            } catch (Exception e) {
+              Log.e(TAG, "Error inserting user: " + user.email, e);
+            }
+          }
+        }
+      }
+
+      return true;
+
     } catch (JSONException error) {
-      Log.e(TAG, "error: " + error);
+      Log.e(TAG, "JSON Parsing Error: " + error.getMessage(), error);
+    } catch (Exception ex) {
+      Log.e(TAG, "Unexpected Error: " + ex.getMessage(), ex);
     }
 
     return false;
   }
+
 
 
   //Se carga el JSON en memoria como un String de texto plano
@@ -280,6 +302,35 @@ public class CatalogRepository implements RepositoryContract {
     }
 
     return json;
+  }
+
+
+
+
+  @Override
+  public void verifyUser(String email, String password, VerifyUserCallback callback) {
+    AsyncTask.execute(() -> {
+      try {
+        Log.d(TAG, "Checking user in DB: Email=" + email);
+        UsersItem user = database.usersDao().findUserByEmail(email);
+
+        boolean isValid = (user != null && user.password != null && user.password.equals(password));
+
+        if (user != null) {
+          Log.d(TAG, "User Found -> Email: " + user.email + ", Password: " + user.password);
+          boolean passwordMatches = user.password.equals(password);
+          Log.d(TAG, "Password Entered: " + password + ", Password Match: " + passwordMatches);
+        } else {
+          Log.d(TAG, "User Found: false");
+        }
+
+        callback.onVerificationResult(isValid);
+
+      } catch (Exception e) {
+        Log.e(TAG, "Error en verifyUser()", e);
+        callback.onVerificationResult(false);
+      }
+    });
   }
 
 

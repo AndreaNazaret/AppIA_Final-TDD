@@ -5,6 +5,7 @@ import java.lang.ref.WeakReference;
 import android.util.Log;
 
 import es.ulpgc.eite.da.advmasterdetail.app.CatalogMediator;
+import es.ulpgc.eite.da.advmasterdetail.categories.CategoryListState;
 
 public class LoginPresenter implements LoginContract.Presenter {
 
@@ -45,6 +46,20 @@ public class LoginPresenter implements LoginContract.Presenter {
     }
 
     @Override
+    public void loadInitialData() {
+        Log.d(TAG, "Loading initial data from JSON...");
+        model.loadCatalogData(error -> {
+            if (!error) {
+                Log.d(TAG, "Initial data loaded successfully.");
+            } else {
+                Log.e(TAG, "Error loading initial data.");
+            }
+        });
+    }
+
+
+
+    @Override
     public void onBackButtonPressed() {
         Log.e(TAG, "onBackButtonPressed()");
 
@@ -78,6 +93,8 @@ public class LoginPresenter implements LoginContract.Presenter {
     public void onLoginButtonClicked() {
         String email = view.get().getEmailInput();
         String password = view.get().getPasswordInput();
+
+        Log.d(TAG, "Parámetros introducidos (Presenter): Email=" + email + ", Password=" + password);
 
         model.verifyUser(email, password, success -> {
             if (success) {

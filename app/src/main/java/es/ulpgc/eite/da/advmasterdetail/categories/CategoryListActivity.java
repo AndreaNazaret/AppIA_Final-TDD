@@ -34,13 +34,6 @@ public class CategoryListActivity
     // do the setup
     CategoryListScreen.configure(this);
 
-    if (presenter == null) {
-      Log.e(TAG, "ERROR: presenter no fue inyectado correctamente");
-      finish(); // Detiene la actividad para evitar crash
-      return;
-    }
-
-
     // do some work
     initCategoryListContainer();
 

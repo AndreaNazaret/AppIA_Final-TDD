@@ -16,7 +16,9 @@ public interface LoginContract {
         void navigateToPreviousScreen();
 
         String getEmailInput();
+
         String getPasswordInput();
+
         void showLoginError();
     }
 
@@ -26,6 +28,8 @@ public interface LoginContract {
         void injectModel(Model model);
 
         void onResumeCalled();
+
+        void loadInitialData();
 
         void onCreateCalled();
 
@@ -38,6 +42,7 @@ public interface LoginContract {
         void onDestroyCalled();
 
         void onGuestButtonClicked();
+
         void onLoginButtonClicked();
 
 
@@ -46,6 +51,8 @@ public interface LoginContract {
     interface Model {
 
         public void verifyUser(String email, String password, RepositoryContract.VerifyUserCallback callback);
-    }
+        void loadCatalogData(RepositoryContract.FetchCatalogDataCallback callback);
 
+
+    }
 }

@@ -1,10 +1,8 @@
 package es.ulpgc.eite.da.advmasterdetail.login;
 
-import android.os.AsyncTask;
 import android.util.Log;
 
 import es.ulpgc.eite.da.advmasterdetail.data.RepositoryContract;
-import es.ulpgc.eite.da.advmasterdetail.data.UsersItem;
 
 public class LoginModel implements LoginContract.Model {
 
@@ -16,11 +14,17 @@ public class LoginModel implements LoginContract.Model {
         this.repository = repository;
 
     }
+
+
     @Override
     public void verifyUser(String email, String password, RepositoryContract.VerifyUserCallback callback) {
         repository.verifyUser(email, password, callback);
     }
 
+    @Override
+    public void loadCatalogData(RepositoryContract.FetchCatalogDataCallback callback) {
+        repository.loadCatalog(true, callback); // true para borrar datos previos
+    }
 
 }
 /*
