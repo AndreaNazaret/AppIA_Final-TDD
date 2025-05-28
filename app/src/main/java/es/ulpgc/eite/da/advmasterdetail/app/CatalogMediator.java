@@ -6,6 +6,7 @@ import es.ulpgc.eite.da.advmasterdetail.data.ProductItem;
 import es.ulpgc.eite.da.advmasterdetail.login.LoginState;
 import es.ulpgc.eite.da.advmasterdetail.product.ProductDetailState;
 import es.ulpgc.eite.da.advmasterdetail.products.ProductListState;
+import es.ulpgc.eite.da.advmasterdetail.register.RegisterState;
 
 public class CatalogMediator {
 
@@ -13,10 +14,14 @@ public class CatalogMediator {
 //  private ProductListState productListState = new ProductListState();
 //  private ProductDetailState productDetailState = new ProductDetailState();
 //  private LoginState loginState = new LoginState();
-  private CategoryListState categoryListState;
+//  private RegisterState registerState = new RegisterState();
+
   private LoginState loginState;
+  private RegisterState registerState;
+  private CategoryListState categoryListState;
   private ProductListState productListState;
   private ProductDetailState productDetailState;
+
   private CategoryItem category;
   private ProductItem product;
 
@@ -41,6 +46,7 @@ public class CatalogMediator {
   }
 
 
+
   public CategoryListState getCategoryListState() {
     return categoryListState;
   }
@@ -49,8 +55,10 @@ public class CatalogMediator {
     return productDetailState;
   }
 
-  public LoginState getLoginState() {
-    return loginState;
+  public LoginState getLoginState() {return loginState;}
+
+  public RegisterState getRegisterState() {
+    return registerState;
   }
 
   public ProductListState getProductListState() {
@@ -86,6 +94,12 @@ public class CatalogMediator {
   public void setLoginState(LoginState state) {
     loginState = state;
   }
+
+  public void setRegisterState(RegisterState state) {
+    registerState = state;
+  }
+
+
   public void setProductListState(ProductListState state) {
     productListState=state;
 

@@ -13,6 +13,8 @@ public interface LoginContract {
 
         void navigateToCategoryScreen();
 
+        void navigateToRegisterScreen();
+
         void navigateToPreviousScreen();
 
         String getEmailInput();
@@ -44,6 +46,8 @@ public interface LoginContract {
         void onGuestButtonClicked();
 
         void onLoginButtonClicked();
+
+        void onRegisterButtonClicked();
 
 
     }

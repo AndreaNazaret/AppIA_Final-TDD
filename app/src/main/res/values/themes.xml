@@ -14,4 +14,11 @@
         <item name="android:textColorPrimary">#FFFFFF</item>
     </style>
 
+    <style name="Theme.AdvMasterDetail.Register" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">#524A83</item> <!-- Morado -->
+        <item name="colorPrimaryVariant">#524A83</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
+    </style>
+
 </resources>

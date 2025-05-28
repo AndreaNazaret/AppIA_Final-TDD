@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import es.ulpgc.eite.da.advmasterdetail.R;
 import es.ulpgc.eite.da.advmasterdetail.categories.CategoryListActivity;
+import es.ulpgc.eite.da.advmasterdetail.register.RegisterActivity;
 
 public class LoginActivity
     extends AppCompatActivity implements LoginContract.View {
@@ -41,6 +42,8 @@ public class LoginActivity
     });
 
     findViewById(R.id.guestButton).setOnClickListener(view ->presenter.onGuestButtonClicked());
+
+    findViewById(R.id.registerButton).setOnClickListener(view ->presenter.onRegisterButtonClicked());
 
     // init or update the state
     if (savedInstanceState == null) {
@@ -124,9 +127,22 @@ public class LoginActivity
     try {
       Intent intent = new Intent(this, CategoryListActivity.class);
       startActivity(intent);
-      Log.e(TAG, "Intent lanzado correctamente");
+      Log.e(TAG, "Intent lanzado correctamente hacia category");
     } catch (Exception e) {
       Log.e(TAG, "ERROR al lanzar CategoryListActivity: " + e.getMessage(), e);
+    }
+  }
+
+  @Override
+  public void navigateToRegisterScreen() {
+    // Log.e(TAG, "navigateToNextScreen()");
+
+    try {
+      Intent intent = new Intent(this, RegisterActivity.class);
+      startActivity(intent);
+      Log.e(TAG, "Intent lanzado correctamente hacia register");
+    } catch (Exception e) {
+      Log.e(TAG, "ERROR al lanzar RegisterActivity: " + e.getMessage(), e);
     }
   }
 
