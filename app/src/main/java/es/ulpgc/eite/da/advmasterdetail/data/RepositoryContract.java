@@ -11,6 +11,20 @@ public interface RepositoryContract {
   }
   void verifyUser(String email, String password, VerifyUserCallback callback);
 
+
+
+
+  //Interfaz agregar usuario
+
+  interface AddUserCallback {
+    void onVerificationResultAdd(boolean success);
+  }
+  void addUser(String name, String apellido, String email, String password, AddUserCallback callback);
+
+
+
+
+
   interface FetchCatalogDataCallback {
     void onCatalogDataFetched(boolean error);
   }

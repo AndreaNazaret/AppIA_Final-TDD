@@ -347,5 +347,24 @@ public class CatalogRepository implements RepositoryContract {
     });
   }
 
+  @Override
+  public void addUser(String name, String apellido, String email, String password, AddUserCallback callback){
+    AsyncTask.execute(() -> {
+      try{
+        UsersItem user = new UsersItem();
+        user.firstName= name;
+        user.lastName = apellido;
+        user.email = email;
+        user.password = password;
+
+        database.usersDao().insertUser(user);
+        callback.onVerificationResultAdd(true);
+      } catch (Exception e) {
+        Log.e(TAG, "Error en el try de addUser del repository", e);
+        callback.onVerificationResultAdd(false);
+      }
+    });
+  }
+
 
 }

@@ -52,6 +52,8 @@ public class RegisterPresenter implements RegisterContract.Presenter {
     public void onBackButtonPressed() {
         Log.e(TAG, "onBackButtonPressed()");
 
+
+
     }
 
     @Override
@@ -70,6 +72,37 @@ public class RegisterPresenter implements RegisterContract.Presenter {
         //resetScreenState();
     }
 
+    /*BOTONES*/
+
+    @Override
+    public void onRegisterButtonClicked() {
+        String name = view.get().getNameInput();
+        String apellido = view.get().getLastNameInput();
+        String email = view.get().getEmailInput();
+        String password = view.get().getPasswordInput();
+        Log.d(TAG, "Datos introducidos en Register(Presenter): nombre=" + name + ", apellidos=" + apellido + ", email= " + email + ", pass=" + password);
+
+        model.verifyUser(email,password, success -> {
+            if (success){
+                new android.os.Handler(android.os.Looper.getMainLooper()).post(() ->
+                        view.get().showRegisterErrorExist()
+                );
+            }else{
+                model.addUser(name, apellido, email, password, success2 -> {
+                    if(success2){
+                        new android.os.Handler(android.os.Looper.getMainLooper()).post(() ->
+                                view.get().showRegisterAddCorrect()
+                        );
+                    }else{
+                        new android.os.Handler(android.os.Looper.getMainLooper()).post(() ->
+                                view.get().showRegisterAddError()
+                        );
+                    }
+                });
+            }
+        });
+
+    }
 
 
   /*

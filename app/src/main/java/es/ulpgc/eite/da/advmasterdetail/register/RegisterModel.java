@@ -15,6 +15,17 @@ public class RegisterModel implements RegisterContract.Model {
         this.repository = repository;
 
     }
+
+    @Override
+    public void verifyUser(String email, String password, RepositoryContract.VerifyUserCallback callback) {
+        repository.verifyUser(email, password, callback);
+    }
+
+    @Override
+    public void addUser(String name, String apellido, String email, String password, RepositoryContract.AddUserCallback callback){
+        repository.addUser(name,apellido, email, password, callback);
+    }
+
 /*
     @Override
     public String getStoredData() {

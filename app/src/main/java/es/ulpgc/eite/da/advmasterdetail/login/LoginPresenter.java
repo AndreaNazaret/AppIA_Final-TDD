@@ -27,6 +27,8 @@ public class LoginPresenter implements LoginContract.Presenter {
         // call the mediator initialize the state
         state = new LoginState();
 
+        loadInitialData();
+
     }
 
     @Override

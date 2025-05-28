@@ -80,7 +80,7 @@ public class LoginActivity
     // Log.e(TAG, "onResume()");
 
     // load the data
-    presenter.loadInitialData();
+    presenter.onResumeCalled();
   }
 
   @SuppressWarnings("deprecation")

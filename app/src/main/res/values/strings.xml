@@ -28,6 +28,12 @@
     <string name="apellido_hint">Apellido</string>
     <string name="register_hint">REGISTRARSE</string>
 
+    <string name="register_error_exist_message">Usuario ya existente</string>
+
+    <string name="register_error_add_message">Error de registro</string>
+
+    <string name="register_correct_add_message">Usuario registrado correctamente</string>
+
 
 
 </resources>

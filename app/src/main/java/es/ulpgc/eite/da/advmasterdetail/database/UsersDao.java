@@ -16,10 +16,17 @@ import es.ulpgc.eite.da.advmasterdetail.data.UsersItem;
 @Dao
 public interface UsersDao {
 
-//Insertar un usuario
+//Insertar los usuarios
 // "OnConflictStrategy" -> Señala que si ya existe se borre y añada la nueva
   @Insert(onConflict = OnConflictStrategy.REPLACE)
   void insertUsers(List<UsersItem> users);
+
+
+
+  //Insertar un solo usuario
+  @Insert(onConflict = OnConflictStrategy.REPLACE)
+  void insertUser(UsersItem user);
+
 
 
   //Actualizar un usuario
