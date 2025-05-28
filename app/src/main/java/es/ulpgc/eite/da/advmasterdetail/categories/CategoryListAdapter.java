@@ -3,9 +3,12 @@ package es.ulpgc.eite.da.advmasterdetail.categories;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +26,7 @@ public class CategoryListAdapter
 
   public CategoryListAdapter(View.OnClickListener listener) {
 
-    itemList = new ArrayList(); //Necesita los datos
+    itemList = new ArrayList<>(); //Necesita los datos
     clickListener = listener; //Listener para cuando se hace click en un elemento
   }
 
@@ -52,7 +55,7 @@ public class CategoryListAdapter
   @Override
   public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     View view = LayoutInflater.from(parent.getContext())
-        .inflate(R.layout.item_category, parent, false);
+        .inflate(R.layout.category_card_item, parent, false);
     return new ViewHolder(view);
   }
 
@@ -60,19 +63,32 @@ public class CategoryListAdapter
 
   @Override
   public void onBindViewHolder(final ViewHolder holder, int position) {
-    holder.itemView.setTag(itemList.get(position)); //Se asocia a la categoria
+    CategoryItem item = itemList.get(position);
+    holder.itemView.setTag(item);
     holder.itemView.setOnClickListener(clickListener);
 
-    holder.contentView.setText(itemList.get(position).content);
+    holder.titleView.setText(item.title);
+    holder.descriptionView.setText(item.description);
+    holder.detailsView.setText(item.details);
+
+    Glide.with(holder.itemView.getContext())
+            .load(item.imageResId)
+            .into(holder.imageView);
 
   }
 
   class ViewHolder extends RecyclerView.ViewHolder {
-    final TextView contentView;
+    final ImageView imageView;
+    final TextView titleView;
+    final TextView descriptionView;
+    final TextView detailsView;
 
     ViewHolder(View view) {
       super(view);
-      contentView = view.findViewById(R.id.category_name);
+      imageView = view.findViewById(R.id.category_image);
+      titleView = view.findViewById(R.id.category_title);
+      descriptionView = view.findViewById(R.id.category_description);
+      detailsView = view.findViewById(R.id.category_details);
     }
   }
 }

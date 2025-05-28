@@ -13,11 +13,14 @@ import java.util.List;
 @Entity(tableName = "categories")
 public class CategoryItem {
 
-  @PrimaryKey
-  public int id; //Identificador de cada fila
+  @PrimaryKey(autoGenerate = true)
+  public int id;
 
-  public String content; //Nombre de la categoria
-  public String details; //Descripción de la categoria
+  public String title;
+  public String description;
+  public String details;
+  public String imageName;
+  public int imageResId;
 
   @Ignore //No se puede meter un array en un elemento de la tabla de la BD
   @SerializedName("products")
@@ -25,6 +28,6 @@ public class CategoryItem {
 
   @Override
   public String toString() {
-    return content;
+    return title;
   }
 }

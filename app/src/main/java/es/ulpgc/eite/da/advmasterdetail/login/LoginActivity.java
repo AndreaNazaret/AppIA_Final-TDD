@@ -26,7 +26,7 @@ public class LoginActivity
     setContentView(R.layout.activity_login);
     // Cambiar título de la barra
     if (getSupportActionBar() != null) {
-      getSupportActionBar().setTitle("Login");
+      getSupportActionBar().setTitle(R.string.login);
     }
 
     Log.e(TAG, "UsersActivity onCreate INICIADO");

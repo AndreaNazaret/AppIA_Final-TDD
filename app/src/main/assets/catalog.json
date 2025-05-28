@@ -1,9 +1,10 @@
 {
   "categories": [
     {
-      "id": 1,
-      "content": "Tenerife",
-      "details": "16 Best Places to Visit in the Canary Islands",
+      "title": "Imagen",
+      "description": "Herramientas para generación o edición de imágenes mediante IA",
+      "details": "Permiten crear, editar o mejorar imágenes a partir de texto o patrones visuales.",
+      "imageName": "imagen",
       "products": [
         {
           "id": 1,
@@ -45,9 +46,10 @@
       ]
     },
     {
-      "id": 2,
-      "content": "Lanzarote",
-      "details": "16 Best Places to Visit in the Canary Islands",
+      "title": "Texto",
+      "description": "Herramientas centradas en el procesamiento de lenguaje natural",
+      "details": "Generación de texto, corrección gramatical, reescritura y asistencia en redacción.",
+      "imageName": "texto",
       "products": [
         {
           "id": 2,
@@ -71,9 +73,10 @@
       ]
     },
     {
-      "id": 3,
-      "content": "Gran Canaria",
-      "details": "16 Best Places to Visit in the Canary Islands",
+      "title": "Audio",
+      "description": "Herramientas para síntesis, edición y análisis de audio mediante IA",
+      "details": "Conversión de texto a voz, análisis de audio, edición inteligente.",
+      "imageName": "audio",
       "products": [
         {
           "id": 3,
@@ -91,9 +94,10 @@
       ]
     },
     {
-      "id": 4,
-      "content": "Fuerteventura",
-      "details": "16 Best Places to Visit in the Canary Islands",
+      "title": "Investigación",
+      "description": "Asistentes inteligentes para el análisis y búsqueda académica",
+      "details": "Ayudan a encontrar, resumir y organizar información científica.",
+      "imageName": "invest",
       "products": [
         {
           "id": 6,
@@ -105,9 +109,10 @@
       ]
     },
     {
-      "id": 5,
-      "content": "La Palma",
-      "details": "16 Best Places to Visit in the Canary Islands",
+      "title": "Programación",
+      "description": "Asistentes de desarrollo y generación de código por IA",
+      "details": "Sugieren código, completan funciones y ayudan en la depuración.",
+      "imageName": "programacion",
       "products": [
         {
           "id": 14,
@@ -120,20 +125,6 @@
           "content": "Caldera de Taburiente National Park",
           "picture": "https://www.planetware.com/photos-large/E/spain-canary-islands-caldera-de-taburiente.jpg",
           "details": "Known as the Isla Bonita (Beautiful Island), La Palma is the greenest of the Canary Islands. Designated a UNESCO Biosphere Reserve, La Palma's landscape varies from pristine forests to sheer cliffs and black-sand beaches. Among its many protected environments is the Caldera de Taburiente National Park, where volcanic peaks rise to 2,400 meters, and lava flows descend to the sea. For those in search of idyllic surroundings, the park has wooded areas with streams and waterfalls. Along the rocky coastline, picturesque little bays are hidden away in between steep hillsides."
-        }
-
-      ]
-    },
-    {
-      "id": 6,
-      "content": "La Gomera",
-      "details": "16 Best Places to Visit in the Canary Islands",
-      "products": [
-        {
-          "id": 15,
-          "content": "Parque Nacional de Garajonay",
-          "picture": "https://www.planetware.com/photos-large/E/spain-la-gomera-garajonay-national-park.jpg",
-          "details": "La Gomera rises so steeply from the Atlantic that it is impractical to build a road around its coast. Crowning the top half of the island is the world's largest pre-glacial forest, protected as Garajonay National Park, and a UNESCO World Heritage Site. Seventy percent of the 9,325-acre park is covered by a dense laurel forest, similar to those covering Europe in the Tertiary Period. These beautiful, green forests are home to many plants and animals that are indigenous only to this island, and the island's streams and springs are fed by clouds and mists that hover on the peaks in the park. The terrain is steep, and paths through the misty moss-draped forests open to breathtaking, if often vertigo-inspiring, views. The island capital of San Sebastián was where Christopher Columbus outfitted his ships before crossing the Atlantic in 1492."
         }
 
       ]

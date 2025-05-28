@@ -27,7 +27,10 @@ public class CategoryListActivity
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_category_list);
-    setTitle(R.string.title_category_list);
+    // Cambiar título de la barra
+    if (getSupportActionBar() != null) {
+      getSupportActionBar().setTitle(R.string.category);
+    }
 
     Log.e(TAG, "CategoryListActivity onCreate INICIADO");
 

@@ -29,10 +29,12 @@
 
         <activity
             android:name=".register.RegisterActivity"
-            android:theme="@style/Theme.AdvMasterDetail.Login"
+            android:theme="@style/Theme.AdvMasterDetail.Register"
             android:exported="false"/>
+
         <activity
             android:name=".categories.CategoryListActivity"
+            android:theme="@style/Theme.AdvMasterDetail.CategoryList"
             android:exported="false" />
 
         <activity

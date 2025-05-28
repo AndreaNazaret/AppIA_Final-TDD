@@ -35,5 +35,7 @@
     <string name="register_correct_add_message">Usuario registrado correctamente</string>
 
 
+    <!-- Pantalla CategoryList -->
+    <string name="category">Category</string>
 
 </resources>

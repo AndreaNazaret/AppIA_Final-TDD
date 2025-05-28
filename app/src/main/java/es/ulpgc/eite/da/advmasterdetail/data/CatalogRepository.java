@@ -236,6 +236,21 @@ public class CatalogRepository implements RepositoryContract {
           );
 
           for (CategoryItem category : categories) {
+            int resId = context.getResources().getIdentifier(
+                    category.imageName, "drawable", context.getPackageName()
+            );
+
+        // Si no se encuentra la imagen (resId == 0), usar imagen por defecto
+            if (resId == 0) {
+              resId = context.getResources().getIdentifier(
+                      "default_category", "drawable", context.getPackageName()
+              );
+            }
+
+            category.imageResId = resId;
+          }
+
+          for (CategoryItem category : categories) {
             getCategoryDao().insertCategory(category);
           }
 
