@@ -39,11 +39,13 @@
 
         <activity
             android:name=".products.ProductListActivity"
+            android:theme="@style/Theme.AdvMasterDetail.ToolList"
             android:exported="false"/>
 
 
         <activity
             android:name=".product.ProductDetailActivity"
+            android:theme="@style/Theme.AdvMasterDetail.Tool"
             android:exported="false"/>
     </application>
 

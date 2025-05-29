@@ -27,7 +27,10 @@ public class ProductListActivity
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_product_list);
-    setTitle(R.string.title_product_list);
+    // Cambiar título de la barra
+    if (getSupportActionBar() != null) {
+      getSupportActionBar().setTitle(R.string.tools);
+    }
 
     // do the setup
     ProductListScreen.configure(this);

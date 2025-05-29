@@ -14,12 +14,6 @@
           "imageName": "logo_dalle"
         },
         {
-          "name": "Midjourney",
-          "developer": "Desarrollado por Midjourney Inc.",
-          "details": "Midjourney es una herramienta basada en IA que transforma texto en arte visual de alta calidad. Destaca por su estilo artístico distintivo y su enfoque comunitario en Discord. Es ampliamente utilizada en diseño conceptual y creación artística experimental.",
-          "imageName": "logo_midjourney"
-        },
-        {
           "name": "Stable Diffusion",
           "developer": "Desarrollado por Stability AI",
           "details": "Stable Diffusion es un modelo de generación de imágenes open-source que permite crear arte a partir de texto. Puede ejecutarse localmente, lo que ofrece mayor control y privacidad. Su flexibilidad lo hace ideal para desarrolladores y artistas digitales.",

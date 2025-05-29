@@ -28,4 +28,18 @@
         <item name="android:textColorPrimary">#FFFFFF</item>
     </style>
 
+    <style name="Theme.AdvMasterDetail.ToolList" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">#395473</item> <!-- Azul-->
+        <item name="colorPrimaryVariant">#395473</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
+    </style>
+
+    <style name="Theme.AdvMasterDetail.Tool" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">#24524D</item> <!-- Azul-->
+        <item name="colorPrimaryVariant">#24524D</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
+    </style>
+
 </resources>

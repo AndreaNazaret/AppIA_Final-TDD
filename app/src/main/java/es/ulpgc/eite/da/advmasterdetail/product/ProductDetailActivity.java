@@ -76,11 +76,14 @@ public class ProductDetailActivity
 
     if (product != null) {
 
+      ((TextView) findViewById(R.id.product_name)).setText(product.name);
+      ((TextView) findViewById(R.id.product_developer)).setText(product.developer);
       ((TextView) findViewById(R.id.product_detail)).setText(product.details);
-      loadImageFromURL(
-          (ImageView) findViewById(R.id.product_image),
-          product.imageName
-      );
+
+      ImageView imageView = findViewById(R.id.product_image);
+      int resId = getResources().getIdentifier(product.imageName, "drawable", getPackageName());
+      imageView.setImageResource(resId != 0 ? resId : R.drawable.default_category);
+
 
     }
   }

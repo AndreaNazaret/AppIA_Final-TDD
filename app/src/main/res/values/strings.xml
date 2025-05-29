@@ -38,4 +38,7 @@
     <!-- Pantalla CategoryList -->
     <string name="category">Category</string>
 
+    <!-- Pantalla ProductLis -->
+    <string name="tools">Tools</string>
+
 </resources>
