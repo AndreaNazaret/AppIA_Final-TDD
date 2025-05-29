@@ -23,20 +23,23 @@ import androidx.room.PrimaryKey;
 //La tabla productos tiene el ID, el titulo, la descripcion y la imagen
 public class ProductItem {
 
-  @PrimaryKey
+  @PrimaryKey(autoGenerate = true)
   public int id;
 
-  public String content;
-  public String details;
-  public String picture;
+  public String name;
+  public String developer;
+  public String details ;
+  public String imageName;
+  public int imageResId;
 
-  //El producto tiene que tener una categoria que identificaremos con su ID
+  //La herramienta tiene que tener una categoria que identificaremos con su ID
   @ColumnInfo(name = "category_id")
   public int categoryId;
 
 
   @Override
   public String toString() {
-    return content;
+    return name;
   }
+
 }

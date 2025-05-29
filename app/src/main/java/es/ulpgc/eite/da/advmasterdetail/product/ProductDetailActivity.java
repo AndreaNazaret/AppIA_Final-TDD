@@ -79,7 +79,7 @@ public class ProductDetailActivity
       ((TextView) findViewById(R.id.product_detail)).setText(product.details);
       loadImageFromURL(
           (ImageView) findViewById(R.id.product_image),
-          product.picture
+          product.imageName
       );
 
     }

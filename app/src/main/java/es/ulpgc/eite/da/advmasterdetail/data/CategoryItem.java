@@ -13,7 +13,7 @@ import java.util.List;
 @Entity(tableName = "categories")
 public class CategoryItem {
 
-  @PrimaryKey(autoGenerate = true)
+  @PrimaryKey
   public int id;
 
   public String title;
