@@ -33,7 +33,8 @@ public class ProductDetailActivity
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_product_detail);
-    setTitle(R.string.title_product_detail);
+
+
 
     // do the setup
     ProductDetailScreen.configure(this);
@@ -76,6 +77,9 @@ public class ProductDetailActivity
 
     if (product != null) {
 
+      if (getSupportActionBar() != null) {
+        getSupportActionBar().setTitle(product.name);
+      }
       ((TextView) findViewById(R.id.product_name)).setText(product.name);
       ((TextView) findViewById(R.id.product_developer)).setText(product.developer);
       ((TextView) findViewById(R.id.product_detail)).setText(product.details);
