@@ -47,6 +47,11 @@
             android:name=".product.ProductDetailActivity"
             android:theme="@style/Theme.AdvMasterDetail.Tool"
             android:exported="false"/>
+
+        <activity
+            android:name=".favorites.FavoritesActivity"
+            android:theme="@style/Theme.AdvMasterDetail.Tool"
+            android:exported="false"/>
     </application>
 
 </manifest>

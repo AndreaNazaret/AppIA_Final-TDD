@@ -1,5 +1,7 @@
 package es.ulpgc.eite.da.advmasterdetail.data;
 
+import static java.text.Normalizer.normalize;
+
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -17,11 +19,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import es.ulpgc.eite.da.advmasterdetail.database.CatalogDatabase;
 import es.ulpgc.eite.da.advmasterdetail.database.CategoryDao;
+import es.ulpgc.eite.da.advmasterdetail.database.FavoritesDao;
 import es.ulpgc.eite.da.advmasterdetail.database.ProductDao;
 import es.ulpgc.eite.da.advmasterdetail.database.UsersDao;
 
@@ -216,6 +220,10 @@ public class CatalogRepository implements RepositoryContract {
     return database.usersDao();
   }
 
+  private FavoritesDao getFavoritesListDao() {
+    return database.favoritesDao();
+  }
+
 
   private boolean loadCatalogFromJSON(String json) {
     Log.e(TAG, "loadCatalogFromJSON()");
@@ -256,7 +264,7 @@ public class CatalogRepository implements RepositoryContract {
 
           for (CategoryItem category : categories) {
             for (ProductItem product : category.items) {
-              product.categoryId = category.id;
+              product.category_id = category.id;
               getProductDao().insertProduct(product);
             }
           }
@@ -287,6 +295,32 @@ public class CatalogRepository implements RepositoryContract {
 
         }
       }
+
+      //Cargar Favoritos
+      if (jsonObject.has("Favorites")) {
+        JSONArray favArray = jsonObject.getJSONArray("Favorites");
+
+        if (favArray.length() > 0) {
+          final List<FavoriteItem> favs = Arrays.asList(
+                  gson.fromJson(favArray.toString(), FavoriteItem[].class)
+          );
+
+          try {
+            getFavoritesListDao().insertFavorites(favs);
+            Log.d(TAG, "Favoritos insertados: " + favs.size());
+
+            // Verificar que realmente están en la BD
+            List<FavoriteItem> allFavs = getFavoritesListDao().loadFavorites();
+            for (FavoriteItem f : allFavs) {
+              Log.d(TAG, "Favorito -> email: " + f.emailUser + ", herramienta: " + f.nameTool);
+            }
+
+          } catch (Exception e) {
+            Log.e(TAG, "Error inserting favorites", e);
+          }
+        }
+      }
+
 
       return true;
 
@@ -379,6 +413,36 @@ public class CatalogRepository implements RepositoryContract {
         callback.onVerificationResultAdd(false);
       }
     });
+  }
+
+
+  @Override
+  public void getFavoritesListData (String emailUser,RepositoryContract.GetFavoritesCallback callback){
+    Log.e(TAG, "getFavoritesListData() iniciado para: " + emailUser);
+    AsyncTask.execute(() -> {
+      List<FavoriteItem> favorites = database.favoritesDao().loadFavoritesByUser(emailUser);
+      Log.e(TAG, "Favoritos recuperados: " + favorites.size());
+      List<ProductItem> allProducts = database.productDao().loadProductList();
+      Log.e(TAG, "Productos totales en BD: " + allProducts.size());
+      List<ProductItem> favProducts = new ArrayList<>();
+
+      for (FavoriteItem fav : favorites) {
+        for (ProductItem product : allProducts) {
+          Log.e(TAG, "Comparando producto: [" + product.name + "] con favorito: [" + fav.nameTool + "]");
+          if (normalize(product.name).equals(normalize(fav.nameTool))) {
+            favProducts.add(product);
+            Log.e(TAG, "→ MATCH: Añadido " + product.name);
+            break;
+          }
+        }
+      }
+      Log.e(TAG, "Total de productos favoritos final: " + favProducts.size());
+      callback.setFavorites(favProducts);
+    });
+  }
+
+  private String normalize(String input) {
+    return input.trim().toLowerCase().replaceAll("\\s+", " ");
   }
 
 

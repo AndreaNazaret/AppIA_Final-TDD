@@ -107,7 +107,7 @@
     },
     {
       "id": 4,
-      "title": "Investigación",
+      "title": "Investigacion",
       "description": "Asistentes inteligentes para el análisis y búsqueda académica",
       "details": "Ayudan a encontrar, resumir y organizar información científica.",
       "imageName": "invest",
@@ -134,7 +134,7 @@
     },
     {
       "id": 5,
-      "title": "Programación",
+      "title": "Programacion",
       "description": "Asistentes de desarrollo y generación de código por IA",
       "details": "Sugieren código, completan funciones y ayudan en la depuración.",
       "imageName": "programacion",
@@ -204,6 +204,39 @@
       "lastName": "Perez",
       "email": "lucia@example.com",
       "password": "lucia1234"
+    },
+    {
+      "firstName": "User",
+      "lastName": "Prueba",
+      "email": "prueba",
+      "password": "1234"
+    }
+  ],
+
+  "Favorites": [
+    {
+      "emailUser": "daniela@example.com",
+      "nameTool": "GitHub Copilot"
+    },
+    {
+      "emailUser": "lucia@example.com",
+      "nameTool": "ChatGPT"
+    },
+    {
+      "emailUser": "prueba",
+      "nameTool": "ChatGPT"
+    },
+    {
+      "emailUser": "prueba",
+      "nameTool": "Sudowrite"
+    },
+    {
+      "emailUser": "prueba",
+      "nameTool": "Sonix"
+    },
+    {
+      "emailUser": "prueba",
+      "nameTool": "Adobe Firefly"
     }
   ]
 }

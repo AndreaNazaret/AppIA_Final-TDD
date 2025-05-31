@@ -2,7 +2,10 @@ package es.ulpgc.eite.da.advmasterdetail.app;
 
 import es.ulpgc.eite.da.advmasterdetail.categories.CategoryListState;
 import es.ulpgc.eite.da.advmasterdetail.data.CategoryItem;
+import es.ulpgc.eite.da.advmasterdetail.data.FavoriteItem;
 import es.ulpgc.eite.da.advmasterdetail.data.ProductItem;
+import es.ulpgc.eite.da.advmasterdetail.data.UsersItem;
+import es.ulpgc.eite.da.advmasterdetail.favorites.FavoritesState;
 import es.ulpgc.eite.da.advmasterdetail.login.LoginState;
 import es.ulpgc.eite.da.advmasterdetail.product.ProductDetailState;
 import es.ulpgc.eite.da.advmasterdetail.products.ProductListState;
@@ -21,9 +24,12 @@ public class CatalogMediator {
   private CategoryListState categoryListState;
   private ProductListState productListState;
   private ProductDetailState productDetailState;
+  private FavoritesState favoritesState;
 
   private CategoryItem category;
   private ProductItem product;
+  private UsersItem user;
+  private FavoriteItem favorite;
 
 
   private static CatalogMediator INSTANCE;
@@ -38,13 +44,12 @@ public class CatalogMediator {
 
 
   public static CatalogMediator getInstance() {
-    if(INSTANCE == null){
+    if (INSTANCE == null) {
       INSTANCE = new CatalogMediator();
     }
 
     return INSTANCE;
   }
-
 
 
   public CategoryListState getCategoryListState() {
@@ -55,7 +60,9 @@ public class CatalogMediator {
     return productDetailState;
   }
 
-  public LoginState getLoginState() {return loginState;}
+  public LoginState getLoginState() {
+    return loginState;
+  }
 
   public RegisterState getRegisterState() {
     return registerState;
@@ -65,9 +72,19 @@ public class CatalogMediator {
     return productListState;
   }
 
+  public FavoritesState getFavoritesState() {
+    return favoritesState;
+  }
+
   public ProductItem getProduct() {
     ProductItem item = product;
     //product = null;
+    return item;
+  }
+
+  public UsersItem getUser() {
+    UsersItem item = user;
+    //user= null;
     return item;
   }
 
@@ -101,11 +118,14 @@ public class CatalogMediator {
 
 
   public void setProductListState(ProductListState state) {
-    productListState=state;
-
+    productListState = state;
   }
 
   public void setProductDetailState(ProductDetailState state) {
-    productDetailState=state;
+    productDetailState = state;
+  }
+
+  public void setFavoritesState(FavoritesState state) {
+    favoritesState = state;
   }
 }

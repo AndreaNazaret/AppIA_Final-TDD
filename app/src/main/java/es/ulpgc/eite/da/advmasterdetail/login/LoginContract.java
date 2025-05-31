@@ -11,17 +11,16 @@ public interface LoginContract {
 
         void onRefreshViewWithUpdatedData(LoginViewModel viewModel);
 
-        void navigateToCategoryScreen();
+        void navigateToCategoryScreen(String emailUser);
 
         void navigateToRegisterScreen();
-
-        void navigateToPreviousScreen();
 
         String getEmailInput();
 
         String getPasswordInput();
 
         void showLoginError();
+        void navigateToPreviousScreen();
     }
 
     interface Presenter {
@@ -48,6 +47,8 @@ public interface LoginContract {
         void onLoginButtonClicked();
 
         void onRegisterButtonClicked();
+
+
 
 
     }

@@ -21,8 +21,11 @@ public interface RepositoryContract {
   }
   void addUser(String name, String apellido, String email, String password, AddUserCallback callback);
 
-
-
+  //Obtener los favoritos de un usuario
+  interface GetFavoritesCallback {
+    void setFavorites(List<ProductItem> favorites);
+  }
+  void getFavoritesListData (String emailUser,RepositoryContract.GetFavoritesCallback callback);
 
 
   interface FetchCatalogDataCallback {

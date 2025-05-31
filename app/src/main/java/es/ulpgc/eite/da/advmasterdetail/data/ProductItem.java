@@ -32,9 +32,10 @@ public class ProductItem {
   public String imageName;
   public int imageResId;
 
+
   //La herramienta tiene que tener una categoria que identificaremos con su ID
   @ColumnInfo(name = "category_id")
-  public int categoryId;
+  public int category_id;
 
 
   @Override

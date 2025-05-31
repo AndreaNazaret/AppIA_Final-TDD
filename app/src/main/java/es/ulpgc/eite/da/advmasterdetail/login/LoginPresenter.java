@@ -1,10 +1,14 @@
 package es.ulpgc.eite.da.advmasterdetail.login;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import java.lang.ref.WeakReference;
 
+import android.content.Intent;
 import android.util.Log;
 
 import es.ulpgc.eite.da.advmasterdetail.app.CatalogMediator;
+import es.ulpgc.eite.da.advmasterdetail.categories.CategoryListActivity;
 import es.ulpgc.eite.da.advmasterdetail.categories.CategoryListState;
 
 public class LoginPresenter implements LoginContract.Presenter {
@@ -87,7 +91,7 @@ public class LoginPresenter implements LoginContract.Presenter {
 
     @Override
     public void onGuestButtonClicked() {
-        view.get().navigateToCategoryScreen();
+        view.get().navigateToCategoryScreen(state.emailUser);
     }
 
     @Override
@@ -99,7 +103,8 @@ public class LoginPresenter implements LoginContract.Presenter {
 
         model.verifyUser(email, password, success -> {
             if (success) {
-                view.get().navigateToCategoryScreen();
+                state.emailUser = email;
+                view.get().navigateToCategoryScreen(state.emailUser);
             } else {
                 new android.os.Handler(android.os.Looper.getMainLooper()).post(() ->
                         view.get().showLoginError()
@@ -112,6 +117,7 @@ public class LoginPresenter implements LoginContract.Presenter {
     public void onRegisterButtonClicked() {
         view.get().navigateToRegisterScreen();
     }
+
 
 
 

@@ -23,13 +23,6 @@ public class UsersItem {
   public String password; //Contraseña
 
 
-/*
-  @Ignore //No se puede meter un array en un elemento de la tabla de la BD
-  @SerializedName("products")
-  public List<ProductItem> items;  //Llama a al otra tabla de productas asociada a esa categoria
-
-*/
-
   @Override
   public String toString() {
     return firstName;

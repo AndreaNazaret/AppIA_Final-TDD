@@ -121,11 +121,12 @@ public class LoginActivity
 
 
   @Override
-  public void navigateToCategoryScreen() {
+  public void navigateToCategoryScreen(String emailUser) {
     // Log.e(TAG, "navigateToNextScreen()");
 
     try {
       Intent intent = new Intent(this, CategoryListActivity.class);
+      intent.putExtra("emailUser", emailUser);
       startActivity(intent);
       Log.e(TAG, "Intent lanzado correctamente hacia category");
     } catch (Exception e) {

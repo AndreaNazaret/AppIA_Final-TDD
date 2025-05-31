@@ -41,4 +41,7 @@
     <!-- Pantalla ProductLis -->
     <string name="tools">Tools</string>
 
+    <!-- Pantalla Favoritos -->
+    <string name="fav">Favorites</string>
+
 </resources>

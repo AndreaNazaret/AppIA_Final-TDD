@@ -34,4 +34,8 @@ public interface ProductDao {
   //Dame los productos de una categoria en concreto segun el ID de esta
   @Query("SELECT * FROM products WHERE category_id=:categoryId")
   List<ProductItem> loadProducts(final int categoryId);
+
+  @Query("SELECT * FROM products")
+  List<ProductItem> loadProductList();
+
 }

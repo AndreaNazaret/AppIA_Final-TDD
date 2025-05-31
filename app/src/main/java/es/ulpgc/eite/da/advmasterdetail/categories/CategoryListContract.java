@@ -14,6 +14,7 @@ interface CategoryListContract {
     void displayCategoryListData(CategoryListViewModel viewModel);
 
     void navigateToProductListScreen();
+    void navigateToFavoriteScreen(String emailUser);
   }
 
   interface Presenter {
@@ -28,6 +29,8 @@ interface CategoryListContract {
     void onRecreateCalled();
 
       void onPauseCalled();
+
+    void onFavButtonClicked (String emailUser);
   }
 
   interface Model {

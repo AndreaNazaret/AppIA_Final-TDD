@@ -72,6 +72,12 @@ public class CategoryListPresenter implements CategoryListContract.Presenter {
 
   }
 
+  @Override
+  public void onFavButtonClicked (String emailUser){
+    state.emailUser= emailUser;
+    Log.d(TAG, "Usuario que se le pasara a FavActivity" + state.emailUser);
+    view.get().navigateToFavoriteScreen(emailUser);
+  }
 
   @Override
   public void selectedCategoryData(CategoryItem item) {

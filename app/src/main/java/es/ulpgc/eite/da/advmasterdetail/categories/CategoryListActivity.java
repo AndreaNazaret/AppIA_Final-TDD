@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import es.ulpgc.eite.da.advmasterdetail.R;
 import es.ulpgc.eite.da.advmasterdetail.data.CategoryItem;
+import es.ulpgc.eite.da.advmasterdetail.favorites.FavoritesActivity;
 import es.ulpgc.eite.da.advmasterdetail.products.ProductListActivity;
 
 
@@ -39,6 +40,13 @@ public class CategoryListActivity
 
     // do some work
     initCategoryListContainer();
+
+    String userEmail = getIntent().getStringExtra("emailUser");
+
+
+    findViewById(R.id.fab_favorites).setOnClickListener(view -> {
+      presenter.onFavButtonClicked(userEmail);
+    });
 
     if(savedInstanceState == null) {
       presenter.onCreateCalled();
@@ -101,8 +109,21 @@ public class CategoryListActivity
   }
 
   @Override
+  public void navigateToFavoriteScreen(String emailUser) {
+    try {
+      Intent intent = new Intent(this, FavoritesActivity.class);
+      intent.putExtra("emailUser", emailUser);
+      startActivity(intent);
+      Log.e(TAG, "Intent lanzado correctamente hacia favorite");
+    }catch (Exception e) {
+      Log.e(TAG, "ERROR al lanzar FavoritesActivity: " + e.getMessage(), e);
+    }
+  }
+
+  @Override
   public void injectPresenter(CategoryListContract.Presenter presenter) {
     this.presenter = presenter;
   }
+
 
 }
