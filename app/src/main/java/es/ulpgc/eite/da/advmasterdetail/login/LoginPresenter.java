@@ -91,11 +91,17 @@ public class LoginPresenter implements LoginContract.Presenter {
 
     @Override
     public void onGuestButtonClicked() {
+        state.isGuest = true;
+        Log.d(TAG, "Se ha entrado como guest");
+        mediator.setLoginState(state);
         view.get().navigateToCategoryScreen(state.emailUser);
     }
 
     @Override
     public void onLoginButtonClicked() {
+        state.isGuest = false;
+        Log.d(TAG, "Se ha entrado como login");
+        mediator.setLoginState(state);
         String email = view.get().getEmailInput();
         String password = view.get().getPasswordInput();
 

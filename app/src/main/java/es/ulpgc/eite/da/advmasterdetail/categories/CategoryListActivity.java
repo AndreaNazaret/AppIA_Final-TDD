@@ -3,23 +3,28 @@ package es.ulpgc.eite.da.advmasterdetail.categories;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import es.ulpgc.eite.da.advmasterdetail.R;
+import es.ulpgc.eite.da.advmasterdetail.app.CatalogMediator;
 import es.ulpgc.eite.da.advmasterdetail.data.CategoryItem;
 import es.ulpgc.eite.da.advmasterdetail.favorites.FavoritesActivity;
+import es.ulpgc.eite.da.advmasterdetail.login.LoginState;
 import es.ulpgc.eite.da.advmasterdetail.products.ProductListActivity;
 
 
 public class CategoryListActivity
-    extends AppCompatActivity implements CategoryListContract.View {
+        extends AppCompatActivity implements CategoryListContract.View {
 
   public static String TAG = "AdvMasterDetail.CategoryListActivity";
 
   CategoryListContract.Presenter presenter;
+
+  private CatalogMediator mediator;
 
   private CategoryListAdapter listAdapter;
 
@@ -43,10 +48,16 @@ public class CategoryListActivity
 
     String userEmail = getIntent().getStringExtra("emailUser");
 
+    if (presenter != null) {
+      LoginState state = CatalogMediator.getInstance().getLoginState();
+      if (state.isGuest) {
+        findViewById(R.id.fab_favorites).setAlpha(0.5f);
+        findViewById(R.id.fab_favorites).setOnClickListener(view -> presenter.favNotEnableClicked());
+      }else{
+        findViewById(R.id.fab_favorites).setOnClickListener(view -> presenter.onFavButtonClicked(userEmail));
+      }
+    }
 
-    findViewById(R.id.fab_favorites).setOnClickListener(view -> {
-      presenter.onFavButtonClicked(userEmail);
-    });
 
     if(savedInstanceState == null) {
       presenter.onCreateCalled();
@@ -118,6 +129,12 @@ public class CategoryListActivity
     }catch (Exception e) {
       Log.e(TAG, "ERROR al lanzar FavoritesActivity: " + e.getMessage(), e);
     }
+  }
+
+  @Override
+  public void showLoginErrorFavGuest(){
+    String message = getString(R.string.fav_error_message);
+    Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
   }
 
   @Override

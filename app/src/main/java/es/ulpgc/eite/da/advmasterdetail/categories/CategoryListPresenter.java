@@ -8,6 +8,7 @@ import java.util.List;
 import es.ulpgc.eite.da.advmasterdetail.app.CatalogMediator;
 import es.ulpgc.eite.da.advmasterdetail.data.CategoryItem;
 import es.ulpgc.eite.da.advmasterdetail.data.RepositoryContract;
+import es.ulpgc.eite.da.advmasterdetail.login.LoginState;
 
 
 public class CategoryListPresenter implements CategoryListContract.Presenter {
@@ -29,6 +30,11 @@ public class CategoryListPresenter implements CategoryListContract.Presenter {
     // Log.e(TAG, "onCreateCalled");
 
     state = new CategoryListState(); //Crea el estado
+    // Copiar estado del login
+    LoginState loginState = mediator.getLoginState();
+    state.isGuest = loginState.isGuest;
+
+    mediator.setCategoryListState(state);
 
   }
 
@@ -72,11 +78,21 @@ public class CategoryListPresenter implements CategoryListContract.Presenter {
 
   }
 
+
   @Override
   public void onFavButtonClicked (String emailUser){
     state.emailUser= emailUser;
     Log.d(TAG, "Usuario que se le pasara a FavActivity" + state.emailUser);
     view.get().navigateToFavoriteScreen(emailUser);
+  }
+
+
+
+  @Override
+  public void favNotEnableClicked(){
+    new android.os.Handler(android.os.Looper.getMainLooper()).post(() ->
+            view.get().showLoginErrorFavGuest()
+    );
   }
 
   @Override

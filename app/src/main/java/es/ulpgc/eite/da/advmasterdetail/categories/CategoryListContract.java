@@ -15,11 +15,14 @@ interface CategoryListContract {
 
     void navigateToProductListScreen();
     void navigateToFavoriteScreen(String emailUser);
+
+    void showLoginErrorFavGuest();
   }
 
   interface Presenter {
     void injectView(WeakReference<View> view);
     void injectModel(Model model);
+    public void onFavButtonClicked (String emailUser);
 
     void fetchCategoryListData();
     void selectedCategoryData(CategoryItem item);
@@ -28,9 +31,10 @@ interface CategoryListContract {
 
     void onRecreateCalled();
 
-      void onPauseCalled();
+    void onPauseCalled();
 
-    void onFavButtonClicked (String emailUser);
+
+    void favNotEnableClicked();
   }
 
   interface Model {

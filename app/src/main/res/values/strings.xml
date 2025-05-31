@@ -37,6 +37,8 @@
 
     <!-- Pantalla CategoryList -->
     <string name="category">Category</string>
+    <string name="fav_error_message">Inicia sesión para acceder a favoritos</string>
+
 
     <!-- Pantalla ProductLis -->
     <string name="tools">Tools</string>
