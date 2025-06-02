@@ -6,5 +6,7 @@ import es.ulpgc.eite.da.advmasterdetail.data.ProductItem;
 public class ProductDetailViewModel  {
 
   public ProductItem product;
+
+  public boolean isFavorite;
 }
 

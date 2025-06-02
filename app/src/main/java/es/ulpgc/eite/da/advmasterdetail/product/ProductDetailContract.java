@@ -2,6 +2,8 @@ package es.ulpgc.eite.da.advmasterdetail.product;
 
 import java.lang.ref.WeakReference;
 
+import es.ulpgc.eite.da.advmasterdetail.data.ProductItem;
+
 interface ProductDetailContract {
 
   interface View {
@@ -21,9 +23,15 @@ interface ProductDetailContract {
     void onRecreateCalled();
 
       void onPauseCalled();
+
+    void onFavoriteButtonClicked();
+
   }
 
   interface Model {
+
+    void onUpdatedDataFromRecreatedScreen(
+            ProductItem product, boolean isFavorite);
 
   }
 

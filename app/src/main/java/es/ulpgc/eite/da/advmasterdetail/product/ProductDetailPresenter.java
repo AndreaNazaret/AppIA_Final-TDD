@@ -74,6 +74,20 @@ public class ProductDetailPresenter implements ProductDetailContract.Presenter {
 
 
   @Override
+  public void onFavoriteButtonClicked() {
+    Log.e(TAG, "onFavoriteButtonClicked()");
+
+    // TODO: include code if necessary
+    state.isFavorite=!state.isFavorite;
+
+    model.onUpdatedDataFromRecreatedScreen(state.product, state.isFavorite);
+
+    mediator.setProductDetailState(state);
+
+    view.get().displayProductDetailData(state);
+  }
+
+  @Override
   public void injectView(WeakReference<ProductDetailContract.View> view) {
     this.view = view;
   }

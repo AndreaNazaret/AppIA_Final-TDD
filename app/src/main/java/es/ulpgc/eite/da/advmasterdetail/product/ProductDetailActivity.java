@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,6 +30,10 @@ public class ProductDetailActivity
 
   ProductDetailContract.Presenter presenter;
 
+  private TextView productNameTextView, productDescrTextView;
+
+  private ImageButton favoriteButton;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -38,6 +43,12 @@ public class ProductDetailActivity
       getSupportActionBar().hide();
     }
 
+    favoriteButton  =findViewById(R.id.favorite_button);
+    productNameTextView=findViewById(R.id.product_name);
+    productDescrTextView=findViewById(R.id.product_detail);
+
+    favoriteButton .setOnClickListener(
+            view -> presenter.onFavoriteButtonClicked());
 
     // do the setup
     ProductDetailScreen.configure(this);
@@ -77,6 +88,8 @@ public class ProductDetailActivity
 
     // deal with the data
     ProductItem product = viewModel.product;
+    productNameTextView.setText(product.getName());
+    productDescrTextView.setText(product.getDescription());
 
     if (product != null) {
 
@@ -89,8 +102,13 @@ public class ProductDetailActivity
       int resId = getResources().getIdentifier(product.imageName, "drawable", getPackageName());
       imageView.setImageResource(resId != 0 ? resId : R.drawable.default_category);
 
-
     }
+    if (viewModel.isFavorite) {
+      favoriteButton.setImageResource(R.drawable.ic_red_heart);
+    } else {
+      favoriteButton.setImageResource(R.drawable.ic_black_heart);
+    }
+
   }
 
   private void loadImageFromURL(ImageView imageView, String imageUrl){

@@ -38,6 +38,11 @@ public class ProductItem {
   public int category_id;
 
 
+  public int getId() { return id; }
+  public String getName() { return name; }
+  public String getDescription() { return developer; }
+  public String getCategory() { return details ; }
+
   @Override
   public String toString() {
     return name;
