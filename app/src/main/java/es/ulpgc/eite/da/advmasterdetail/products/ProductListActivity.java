@@ -29,7 +29,7 @@ public class ProductListActivity
     setContentView(R.layout.activity_product_list);
     // Cambiar título de la barra
     if (getSupportActionBar() != null) {
-      getSupportActionBar().setTitle(R.string.tools);
+      getSupportActionBar().hide();
     }
 
     // do the setup

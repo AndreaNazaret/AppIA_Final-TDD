@@ -1,5 +1,7 @@
 package es.ulpgc.eite.da.advmasterdetail.login;
 
+import android.content.Context;
+
 import java.lang.ref.WeakReference;
 
 import es.ulpgc.eite.da.advmasterdetail.data.RepositoryContract;
@@ -21,6 +23,9 @@ public interface LoginContract {
 
         void showLoginError();
         void navigateToPreviousScreen();
+        void restartActivityForLanguageChange();
+        Context getContext();
+
     }
 
     interface Presenter {
@@ -47,6 +52,8 @@ public interface LoginContract {
         void onLoginButtonClicked();
 
         void onRegisterButtonClicked();
+
+        void changeLanguage(String lang);
 
 
 

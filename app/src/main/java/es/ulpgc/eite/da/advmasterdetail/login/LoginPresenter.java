@@ -5,6 +5,8 @@ import static androidx.core.content.ContextCompat.startActivity;
 import java.lang.ref.WeakReference;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import es.ulpgc.eite.da.advmasterdetail.app.CatalogMediator;
@@ -123,6 +125,14 @@ public class LoginPresenter implements LoginContract.Presenter {
     public void onRegisterButtonClicked() {
         view.get().navigateToRegisterScreen();
     }
+
+    @Override
+    public void changeLanguage(String lang) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(view.get().getContext());
+        prefs.edit().putString("app_language", lang).apply();
+        view.get().restartActivityForLanguageChange();
+    }
+
 
 
 

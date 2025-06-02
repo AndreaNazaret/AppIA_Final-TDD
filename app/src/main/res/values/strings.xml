@@ -13,7 +13,7 @@
     <string name="login">Login</string>
     <string name="login_button_text">INICIAR SESIÓN</string>
     <string name="guest_button_text">ENTRAR COMO INVITADO</string>
-    <string name="register_button_text">REGISTRARTE</string>
+    <string name="register_button_text">REGISTRARME</string>
 
     <string name="email_hint">Correo</string>
     <string name="password_hint">Contraseña</string>
@@ -21,12 +21,14 @@
 
     <string name="login_error_message">Correo o contraseña incorrectos</string>
 
+    <string name="espagnol">Español</string>
+    <string name="english">English</string>
 
     <!-- Pantalla Register -->
     <string name="register">Register</string>
     <string name="nombre_hint">Nombre</string>
     <string name="apellido_hint">Apellido</string>
-    <string name="register_hint">REGISTRARSE</string>
+    <string name="register_hint">REGISTRARME</string>
 
     <string name="register_error_exist_message">Usuario ya existente</string>
 

@@ -1,8 +1,14 @@
 package es.ulpgc.eite.da.advmasterdetail.login;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +18,7 @@ import android.widget.Toast;
 import es.ulpgc.eite.da.advmasterdetail.R;
 import es.ulpgc.eite.da.advmasterdetail.categories.CategoryListActivity;
 import es.ulpgc.eite.da.advmasterdetail.register.RegisterActivity;
+import es.ulpgc.eite.da.advmasterdetail.utils.LocaleHelper;
 
 public class LoginActivity
     extends AppCompatActivity implements LoginContract.View {
@@ -23,16 +30,16 @@ public class LoginActivity
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    Log.e(TAG, "UsersActivity onCreate INICIADO");
+
     setContentView(R.layout.activity_login);
     // Cambiar título de la barra
     if (getSupportActionBar() != null) {
-      getSupportActionBar().setTitle(R.string.login);
+      getSupportActionBar().hide();
     }
 
-    Log.e(TAG, "UsersActivity onCreate INICIADO");
 
     LoginScreen.configure(this);
-
 
     findViewById(R.id.loginButton).setOnClickListener(view -> {
       String email = getEmailInput();
@@ -42,8 +49,9 @@ public class LoginActivity
     });
 
     findViewById(R.id.guestButton).setOnClickListener(view ->presenter.onGuestButtonClicked());
-
     findViewById(R.id.registerButton).setOnClickListener(view ->presenter.onRegisterButtonClicked());
+    findViewById(R.id.btn_english).setOnClickListener(v -> presenter.changeLanguage("en"));
+    findViewById(R.id.btn_spanish).setOnClickListener(v -> presenter.changeLanguage("es"));
 
     // init or update the state
     if (savedInstanceState == null) {
@@ -153,6 +161,26 @@ public class LoginActivity
 
     finish();
   }
+
+  @Override
+  protected void attachBaseContext(Context newBase) {
+    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(newBase);
+    String lang = prefs.getString("app_language", "es"); // "es" por defecto
+    super.attachBaseContext(LocaleHelper.setLocale(newBase, lang));
+  }
+
+  @Override
+  public void restartActivityForLanguageChange() {
+    LocaleHelper.setLocale(this, PreferenceManager.getDefaultSharedPreferences(this).getString("app_language", "es"));
+    recreate(); // Reinicia LoginActivity con el nuevo idioma
+  }
+
+  @Override
+  public Context getContext() {
+    return this;
+  }
+
+
 
   @Override
   public void injectPresenter(LoginContract.Presenter presenter) {

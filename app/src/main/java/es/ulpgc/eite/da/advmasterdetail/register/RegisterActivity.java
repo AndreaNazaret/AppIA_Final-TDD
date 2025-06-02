@@ -25,7 +25,7 @@ public class RegisterActivity
 
         // Cambiar título de la barra
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Register");
+            getSupportActionBar().hide();
         }
 
         Log.e(TAG, "Register onCreate INICIADO");

@@ -35,7 +35,7 @@ public class CategoryListActivity
     setContentView(R.layout.activity_category_list);
     // Cambiar título de la barra
     if (getSupportActionBar() != null) {
-      getSupportActionBar().setTitle(R.string.category);
+      getSupportActionBar().hide();
     }
 
     Log.e(TAG, "CategoryListActivity onCreate INICIADO");

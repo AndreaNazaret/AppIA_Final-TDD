@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">Adv Master-Detail</string>
+
+    <string name="title_category_list">Category List</string>
+    <string name="title_category_detail">Category Detail</string>
+    <string name="title_product_list">Products</string>
+    <string name="title_product_detail">Product Detail</string>
+    <string name="item_content">Item Content</string>
+    <string name="item_details">Item Details</string>
+
+
+    <!-- Pantalla Login -->
+    <string name="login">Login</string>
+    <string name="login_button_text">LOG IN</string>
+    <string name="guest_button_text">ENTER AS GUEST</string>
+    <string name="register_button_text">REGISTER</string>
+
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="no_account_text">If you dont have an account...</string>
+
+    <string name="login_error_message">Incorrect email or password</string>
+
+    <string name="espagnol">Español</string>
+    <string name="english">English</string>
+
+    <!-- Pantalla Register -->
+    <string name="register">Register</string>
+    <string name="nombre_hint">First Name</string>
+    <string name="apellido_hint">Last Name</string>
+    <string name="register_hint">REGISTER</string>
+
+    <string name="register_error_exist_message">User already exist</string>
+
+    <string name="register_error_add_message">Register error</string>
+
+    <string name="register_correct_add_message">User register succesful</string>
+
+
+    <!-- Pantalla CategoryList -->
+    <string name="category">Category</string>
+    <string name="fav_error_message">Login to access to favorites</string>
+
+
+    <!-- Pantalla ProductLis -->
+    <string name="tools">Tools</string>
+
+    <!-- Pantalla Favoritos -->
+    <string name="fav">Favorites</string>
+
+</resources>

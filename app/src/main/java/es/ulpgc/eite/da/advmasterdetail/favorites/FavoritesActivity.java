@@ -32,7 +32,7 @@ public class FavoritesActivity
         setContentView(R.layout.activity_favorite_list);
         // Cambiar título de la barra
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle(R.string.fav);
+            getSupportActionBar().hide();
         }
 
         String userEmail = getIntent().getStringExtra("emailUser");

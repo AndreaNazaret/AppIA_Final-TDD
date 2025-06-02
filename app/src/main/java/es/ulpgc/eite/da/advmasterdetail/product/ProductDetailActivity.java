@@ -34,6 +34,9 @@ public class ProductDetailActivity
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_product_detail);
 
+    if (getSupportActionBar() != null) {
+      getSupportActionBar().hide();
+    }
 
 
     // do the setup
@@ -77,9 +80,7 @@ public class ProductDetailActivity
 
     if (product != null) {
 
-      if (getSupportActionBar() != null) {
-        getSupportActionBar().setTitle(product.name);
-      }
+
       ((TextView) findViewById(R.id.product_name)).setText(product.name);
       ((TextView) findViewById(R.id.product_developer)).setText(product.developer);
       ((TextView) findViewById(R.id.product_detail)).setText(product.details);
