@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 
 import es.ulpgc.eite.da.advmasterdetail.R;
+import es.ulpgc.eite.da.advmasterdetail.app.CatalogMediator;
 import es.ulpgc.eite.da.advmasterdetail.data.FavoriteItem;
 import es.ulpgc.eite.da.advmasterdetail.data.ProductItem;
 import es.ulpgc.eite.da.advmasterdetail.product.ProductDetailActivity;
@@ -35,8 +36,8 @@ public class FavoritesActivity
             getSupportActionBar().hide();
         }
 
-        String userEmail = getIntent().getStringExtra("emailUser");
-         Log.e(TAG, "onCreate() Favorites INICIADO para el usuario "+ userEmail );
+        Log.e(TAG, "onCreate() Favorites INICIADO");
+
 
         // do the setup
         FavoritesScreen.configure(this);
@@ -59,8 +60,8 @@ public class FavoritesActivity
         // Log.e(TAG, "onResume()");
 
         // load the data
-        String userEmail = getIntent().getStringExtra("emailUser");
-        presenter.fetchFavoritesData(userEmail);
+
+        presenter.fetchFavoritesData();
     }
 
 
@@ -76,7 +77,7 @@ public class FavoritesActivity
 
 
     private void initFavoritesListContainer() {
-        String emailUser =getIntent().getStringExtra("emailUser");
+
         listAdapter = new FavoritesAdapter(view -> {
 
             ProductItem item = (ProductItem) view.getTag();
@@ -87,7 +88,7 @@ public class FavoritesActivity
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(listAdapter);
 
-        presenter.fetchFavoritesData(emailUser);
+        presenter.fetchFavoritesData();
     }
 
     @Override

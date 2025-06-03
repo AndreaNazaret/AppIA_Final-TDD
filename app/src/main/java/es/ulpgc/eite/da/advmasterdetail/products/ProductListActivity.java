@@ -79,6 +79,7 @@ public class ProductListActivity
     recyclerView.setAdapter(listAdapter);
   }
 
+
   @Override
   public void navigateToProductDetailScreen() {
     Intent intent = new Intent(this, ProductDetailActivity.class);

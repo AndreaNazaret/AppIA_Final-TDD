@@ -22,8 +22,9 @@ public interface LoginContract {
         String getPasswordInput();
 
         void showLoginError();
+
         void navigateToPreviousScreen();
-        void restartActivityForLanguageChange();
+
         Context getContext();
 
     }
@@ -53,7 +54,7 @@ public interface LoginContract {
 
         void onRegisterButtonClicked();
 
-        void changeLanguage(String lang);
+
 
 
 

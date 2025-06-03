@@ -30,11 +30,9 @@ public class CategoryListPresenter implements CategoryListContract.Presenter {
     // Log.e(TAG, "onCreateCalled");
 
     state = new CategoryListState(); //Crea el estado
-    // Copiar estado del login
-    LoginState loginState = mediator.getLoginState();
-    state.isGuest = loginState.isGuest;
 
-    mediator.setCategoryListState(state);
+    // Copiar estado del login
+
 
   }
 
@@ -56,9 +54,10 @@ public class CategoryListPresenter implements CategoryListContract.Presenter {
   @Override
   public void fetchCategoryListData() {
     // Log.e(TAG, "fetchCategoryListData");
+    state.emailUser= mediator.getLoginState().emailUser;
+    state.isGuest= mediator.getLoginState().isGuest;
 
     //De modo asincrono se solicita al modelo los datos
-    // call the model
     model.fetchCategoryListData(categories -> {
 
       state.categories = categories;
@@ -66,24 +65,17 @@ public class CategoryListPresenter implements CategoryListContract.Presenter {
       view.get().displayCategoryListData(state);
     });
 
-    /*model.fetchCategoryListData(new RepositoryContract.GetCategoryListCallback() {
-
-      @Override
-      public void setCategoryList(List<CategoryItem> categories) {
-        state.categories = categories;
-
-        view.get().displayCategoryListData(state);
-      }
-    });*/
+    mediator.setCategoryListState(state);
 
   }
 
 
   @Override
-  public void onFavButtonClicked (String emailUser){
-    state.emailUser= emailUser;
-    Log.d(TAG, "Usuario que se le pasara a FavActivity" + state.emailUser);
-    view.get().navigateToFavoriteScreen(emailUser);
+  public void onFavButtonClicked (){
+    state.emailUser= mediator.getLoginState().emailUser;
+    mediator.setCategoryListState(state);
+    Log.d(TAG, "Usuario que se le pasará a FavActivity" + state.emailUser);
+    view.get().navigateToFavoriteScreen();
   }
 
 
@@ -98,6 +90,7 @@ public class CategoryListPresenter implements CategoryListContract.Presenter {
   @Override
   public void selectedCategoryData(CategoryItem item) {
     mediator.setCategory(item);
+    Log.d(TAG, "Usuario que se le pasará a ProductList " + state.emailUser);
     view.get().navigateToProductListScreen();
   }
 

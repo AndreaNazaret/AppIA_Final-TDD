@@ -46,7 +46,7 @@ public class CatalogRepository implements RepositoryContract {
 
 
   public static RepositoryContract getInstance(Context context) {
-    if(INSTANCE == null){
+    if (INSTANCE == null) {
       INSTANCE = new CatalogRepository(context);
     }
 
@@ -70,7 +70,7 @@ public class CatalogRepository implements RepositoryContract {
 
   @Override
   public void loadCatalog(
-      final boolean clearFirst, final FetchCatalogDataCallback callback) {
+          final boolean clearFirst, final FetchCatalogDataCallback callback) {
 
     //1º se asegura se si clear first esta activo para saber si borra todo o no
     Log.d(TAG, "loadCatalog called. clearFirst=" + clearFirst);
@@ -82,7 +82,7 @@ public class CatalogRepository implements RepositoryContract {
     }
 
     AsyncTask.execute(() -> {
-      if(clearFirst) {
+      if (clearFirst) {
         Log.d(TAG, "Clearing database and resetting ID sequence...");
         database.clearAllTables();
         database.getOpenHelper().getWritableDatabase().execSQL("DELETE FROM sqlite_sequence WHERE name='users';"); //Nos permite reiniciar los ID automáticos cuando se regenera la tabla
@@ -104,11 +104,9 @@ public class CatalogRepository implements RepositoryContract {
   }
 
 
-
-
   @Override
   public void getProductList(
-      final CategoryItem category, final GetProductListCallback callback) {
+          final CategoryItem category, final GetProductListCallback callback) {
 
     getProductList(category.id, callback);
   }
@@ -116,10 +114,10 @@ public class CatalogRepository implements RepositoryContract {
 
   @Override
   public void getProductList(
-      final int categoryId, final GetProductListCallback callback) {
+          final int categoryId, final GetProductListCallback callback) {
 
     AsyncTask.execute(() -> {
-      if(callback != null) {
+      if (callback != null) {
         callback.setProductList(getProductDao().loadProducts(categoryId));
       }
     });
@@ -131,7 +129,7 @@ public class CatalogRepository implements RepositoryContract {
   public void getProduct(final int id, final GetProductCallback callback) {
 
     AsyncTask.execute(() -> {
-      if(callback != null) {
+      if (callback != null) {
         callback.setProduct(getProductDao().loadProduct(id));
       }
     });
@@ -141,7 +139,7 @@ public class CatalogRepository implements RepositoryContract {
   public void getCategory(final int id, final GetCategoryCallback callback) {
 
     AsyncTask.execute(() -> {
-      if(callback != null) {
+      if (callback != null) {
         callback.setCategory(getCategoryDao().loadCategory(id));
       }
     });
@@ -151,7 +149,7 @@ public class CatalogRepository implements RepositoryContract {
   @Override
   public void getCategoryList(final GetCategoryListCallback callback) {
     AsyncTask.execute(() -> {
-      if(callback != null) {
+      if (callback != null) {
         callback.setCategoryList(getCategoryDao().loadCategories());
       }
     });
@@ -160,10 +158,10 @@ public class CatalogRepository implements RepositoryContract {
 
   @Override
   public void deleteProduct(
-      final ProductItem product, final DeleteProductCallback callback) {
+          final ProductItem product, final DeleteProductCallback callback) {
 
     AsyncTask.execute(() -> {
-      if(callback != null) {
+      if (callback != null) {
         getProductDao().deleteProduct(product);
         callback.onProductDeleted();
       }
@@ -172,10 +170,10 @@ public class CatalogRepository implements RepositoryContract {
 
   @Override
   public void updateProduct(
-      final ProductItem product, final UpdateProductCallback callback) {
+          final ProductItem product, final UpdateProductCallback callback) {
 
     AsyncTask.execute(() -> {
-      if(callback != null) {
+      if (callback != null) {
         getProductDao().updateProduct(product);
         callback.onProductUpdated();
       }
@@ -185,10 +183,10 @@ public class CatalogRepository implements RepositoryContract {
 
   @Override
   public void deleteCategory(
-      final CategoryItem category, final DeleteCategoryCallback callback) {
+          final CategoryItem category, final DeleteCategoryCallback callback) {
 
     AsyncTask.execute(() -> {
-      if(callback != null) {
+      if (callback != null) {
         getCategoryDao().deleteCategory(category);
         callback.onCategoryDeleted();
       }
@@ -197,10 +195,10 @@ public class CatalogRepository implements RepositoryContract {
 
   @Override
   public void updateCategory(
-      final CategoryItem category, final UpdateCategoryCallback callback) {
+          final CategoryItem category, final UpdateCategoryCallback callback) {
 
     AsyncTask.execute(() -> {
-      if(callback != null) {
+      if (callback != null) {
         getCategoryDao().updateCategory(category);
         callback.onCategoryUpdated();
       }
@@ -248,7 +246,7 @@ public class CatalogRepository implements RepositoryContract {
                     category.imageName, "drawable", context.getPackageName()
             );
 
-        // Si no se encuentra la imagen (resId == 0), usar imagen por defecto
+            // Si no se encuentra la imagen (resId == 0), usar imagen por defecto
             if (resId == 0) {
               resId = context.getResources().getIdentifier(
                       "default_category", "drawable", context.getPackageName()
@@ -281,17 +279,17 @@ public class CatalogRepository implements RepositoryContract {
           );
 
 
-            try {
-              getUsersDao().insertUsers(users);
-              Log.d(TAG, "User Inserted: " + users.size());
-              // Verificar qué usuarios hay en la base de datos después de la inserción
-              List<UsersItem> allUsers = getUsersDao().loadUsers();
-              for (UsersItem u : allUsers) {
-                Log.d(TAG, "User in DB -> ID: " + u.id + ", Email: " + u.email + ", Password: " + u.password);
-              }
-            } catch (Exception e) {
-              Log.e(TAG, "Error inserting user.");
+          try {
+            getUsersDao().insertUsers(users);
+            Log.d(TAG, "User Inserted: " + users.size());
+            // Verificar qué usuarios hay en la base de datos después de la inserción
+            List<UsersItem> allUsers = getUsersDao().loadUsers();
+            for (UsersItem u : allUsers) {
+              Log.d(TAG, "User in DB -> ID: " + u.id + ", Email: " + u.email + ", Password: " + u.password);
             }
+          } catch (Exception e) {
+            Log.e(TAG, "Error inserting user.");
+          }
 
         }
       }
@@ -334,10 +332,9 @@ public class CatalogRepository implements RepositoryContract {
   }
 
 
-
   //Se carga el JSON en memoria como un String de texto plano
 
-  private String loadJSONFromAsset( )  {
+  private String loadJSONFromAsset() {
 
     //Log.e(TAG, "loadJSONFromAsset()");
 
@@ -368,8 +365,6 @@ public class CatalogRepository implements RepositoryContract {
   }
 
 
-
-
   @Override
   public void verifyUser(String email, String password, VerifyUserCallback callback) {
     AsyncTask.execute(() -> {
@@ -396,12 +391,13 @@ public class CatalogRepository implements RepositoryContract {
     });
   }
 
+
   @Override
-  public void addUser(String name, String apellido, String email, String password, AddUserCallback callback){
+  public void addUser(String name, String apellido, String email, String password, AddUserCallback callback) {
     AsyncTask.execute(() -> {
-      try{
+      try {
         UsersItem user = new UsersItem();
-        user.firstName= name;
+        user.firstName = name;
         user.lastName = apellido;
         user.email = email;
         user.password = password;
@@ -417,7 +413,7 @@ public class CatalogRepository implements RepositoryContract {
 
 
   @Override
-  public void getFavoritesListData (String emailUser,RepositoryContract.GetFavoritesCallback callback){
+  public void getFavoritesListData(String emailUser, RepositoryContract.GetFavoritesCallback callback) {
     Log.e(TAG, "getFavoritesListData() iniciado para: " + emailUser);
     AsyncTask.execute(() -> {
       List<FavoriteItem> favorites = database.favoritesDao().loadFavoritesByUser(emailUser);
@@ -440,6 +436,85 @@ public class CatalogRepository implements RepositoryContract {
       callback.setFavorites(favProducts);
     });
   }
+
+  @Override
+  public void verifyFavorite(String emailUser, String nameTool, VerifyFavoriteCallback callback) {
+    AsyncTask.execute(() -> {
+      try {
+        Log.d(TAG, "✅ INICIO verifyFavorite");
+        Log.d(TAG, "Checking tool in DB table Favorites → Tool: [" + nameTool + "], User: [" + emailUser + "]");
+
+        List<FavoriteItem> favorites = database.favoritesDao().loadFavoritesByUser(emailUser);
+        Log.d(TAG, "Total favoritos recuperados de BD para ese usuario: " + favorites.size());
+
+        boolean found = false;
+
+        for (FavoriteItem f : favorites) {
+          Log.d(TAG, "Comparando BD: [" + normalize(f.nameTool) + "] con solicitada: [" + normalize(nameTool) + "]");
+          if (normalize(f.nameTool).equals(normalize(nameTool))) {
+            found = true;
+            Log.d(TAG, "✔ FAVORITO ENCONTRADO: " + f.nameTool);
+            break;
+          }
+        }
+
+        if (!found) {
+          Log.d(TAG, "✘ FAVORITO NO ENCONTRADO: " + nameTool);
+        }
+
+        callback.onVerificationResultFavorite(found);
+
+      } catch (Exception e) {
+        Log.e(TAG, "💥 EXCEPCIÓN en verifyFavorite()", e);
+        callback.onVerificationResultFavorite(false);
+      }
+    });
+  }
+
+
+  @Override
+  public void addFavorite(String emailUser, String nameTool, AddFavoritesCallback callback) {
+    AsyncTask.execute(() -> {
+      try {
+        FavoriteItem favorite = new FavoriteItem();
+        favorite.emailUser = emailUser;
+        favorite.nameTool = nameTool;
+
+        Log.d(TAG, " addFavorite → emailUser: [" + emailUser + "], nameTool: [" + nameTool + "]");
+        database.favoritesDao().insertFavorite(favorite);
+        Log.d(TAG, "✅ Favorite inserted into database");
+
+        // Verificación posterior
+        List<FavoriteItem> result = database.favoritesDao().findAll();
+        for (FavoriteItem f : result) {
+          Log.d(TAG, "BD contiene → email: [" + f.emailUser + "], tool: [" + f.nameTool + "]");
+        }
+
+        callback.onVerificationResultAdd(true);
+      } catch (Exception e) {
+        Log.e(TAG, "💥 ERROR en addFavorite()", e);
+        callback.onVerificationResultAdd(false);
+      }
+    });
+  }
+
+
+  @Override
+  public void removeFavorite(String emailUser, String nameTool, RemoveFavoritesCallback callback) {
+    AsyncTask.execute(() -> {
+      try {
+
+        Log.d(TAG, "Borrando favorito desde el repository: Tool=" + nameTool);
+
+        database.favoritesDao().deleteFavorite(emailUser,nameTool);
+        callback.onVerificationResultRemove(true);
+      } catch (Exception e) {
+        Log.e(TAG, "Error en el try de addUser del repository", e);
+        callback.onVerificationResultRemove(false);
+      }
+    });
+  }
+
 
   private String normalize(String input) {
     return input.trim().toLowerCase().replaceAll("\\s+", " ");

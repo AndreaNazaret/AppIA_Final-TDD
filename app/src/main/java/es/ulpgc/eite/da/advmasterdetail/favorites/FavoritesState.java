@@ -12,6 +12,5 @@ public class FavoritesState extends FavoritesViewModel {
 
     public String emailUser;
 
-    public List<ProductItem> productListName;
 
 }

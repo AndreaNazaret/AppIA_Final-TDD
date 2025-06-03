@@ -5,4 +5,6 @@ import es.ulpgc.eite.da.advmasterdetail.data.CategoryItem;
 public class ProductDetailState extends ProductDetailViewModel {
 
     public CategoryItem category;
+
+    public String emailUser;
 }

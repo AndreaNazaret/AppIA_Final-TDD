@@ -45,6 +45,16 @@
     <!-- Pantalla ProductLis -->
     <string name="tools">Tools</string>
 
+    <string name="favorite_error_add_message">Error al añadir favorito</string>
+
+    <string name="favorite_correct_add_message">Favorito guardado correctamente</string>
+
+    <string name="favorite_error_remove_message">Error eliminando favorito</string>
+
+    <string name="favorite_correct_remove_message">Favorito eliminado correctamente</string>
+
+
+
     <!-- Pantalla Favoritos -->
     <string name="fav">Favorites</string>
 

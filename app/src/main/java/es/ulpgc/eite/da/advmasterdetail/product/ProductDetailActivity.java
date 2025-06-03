@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,12 +44,12 @@ public class ProductDetailActivity
       getSupportActionBar().hide();
     }
 
+    Log.e(TAG, "Favorites onCreate INICIADO");
+
     favoriteButton  =findViewById(R.id.favorite_button);
     productNameTextView=findViewById(R.id.product_name);
     productDescrTextView=findViewById(R.id.product_detail);
-
-    favoriteButton .setOnClickListener(
-            view -> presenter.onFavoriteButtonClicked());
+    favoriteButton .setOnClickListener(view -> presenter.onFavoriteButtonClicked());
 
     // do the setup
     ProductDetailScreen.configure(this);
@@ -119,6 +120,28 @@ public class ProductDetailActivity
     reqBuilder.apply(reqOptions);
     reqBuilder.into(imageView);
   }
+
+  public void showFavoriteAddError() {
+    String message = getString(R.string.favorite_error_add_message);
+    Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+  }
+
+  public void showFavoriteAddCorrect() {
+    String message = getString(R.string.favorite_correct_add_message);
+    Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+  }
+
+  public void showFavoriteRemoveError(){
+    String message = getString(R.string.favorite_error_remove_message);
+    Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+  }
+
+  public void showFavoriteRemoveCorrect(){
+    String message = getString(R.string.favorite_correct_remove_message);
+    Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+  }
+
+
 
 
   @Override

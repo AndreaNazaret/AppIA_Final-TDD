@@ -3,6 +3,7 @@ package es.ulpgc.eite.da.advmasterdetail.product;
 import java.lang.ref.WeakReference;
 
 import es.ulpgc.eite.da.advmasterdetail.data.ProductItem;
+import es.ulpgc.eite.da.advmasterdetail.data.RepositoryContract;
 
 interface ProductDetailContract {
 
@@ -10,6 +11,17 @@ interface ProductDetailContract {
     void injectPresenter(Presenter presenter);
 
     void displayProductDetailData(ProductDetailViewModel viewModel);
+
+    void showFavoriteAddError();
+
+    void showFavoriteAddCorrect();
+
+
+    void showFavoriteRemoveError();
+
+    void showFavoriteRemoveCorrect();
+
+
   }
 
   interface Presenter {
@@ -33,6 +45,12 @@ interface ProductDetailContract {
     void onUpdatedDataFromRecreatedScreen(
             ProductItem product, boolean isFavorite);
 
+    void verifyFavorite(String emailUser, String nameTool, RepositoryContract.VerifyFavoriteCallback callback);
+
+    void addFavorite(String emailUser, String nameTool, RepositoryContract.AddFavoritesCallback callback);
+
+    void removeFavorite(String emailUser, String nameTool, RepositoryContract.RemoveFavoritesCallback callback);
   }
+
 
 }

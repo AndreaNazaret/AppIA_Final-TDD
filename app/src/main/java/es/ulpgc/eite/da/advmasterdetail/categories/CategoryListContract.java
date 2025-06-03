@@ -14,7 +14,7 @@ interface CategoryListContract {
     void displayCategoryListData(CategoryListViewModel viewModel);
 
     void navigateToProductListScreen();
-    void navigateToFavoriteScreen(String emailUser);
+    void navigateToFavoriteScreen();
 
     void showLoginErrorFavGuest();
   }
@@ -22,7 +22,7 @@ interface CategoryListContract {
   interface Presenter {
     void injectView(WeakReference<View> view);
     void injectModel(Model model);
-    public void onFavButtonClicked (String emailUser);
+    public void onFavButtonClicked ();
 
     void fetchCategoryListData();
     void selectedCategoryData(CategoryItem item);

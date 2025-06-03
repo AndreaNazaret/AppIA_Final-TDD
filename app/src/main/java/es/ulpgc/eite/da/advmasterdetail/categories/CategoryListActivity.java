@@ -50,11 +50,11 @@ public class CategoryListActivity
 
     if (presenter != null) {
       LoginState state = CatalogMediator.getInstance().getLoginState();
-      if (state.isGuest) {
+      if (state != null && state.isGuest) {
         findViewById(R.id.fab_favorites).setAlpha(0.5f);
         findViewById(R.id.fab_favorites).setOnClickListener(view -> presenter.favNotEnableClicked());
       }else{
-        findViewById(R.id.fab_favorites).setOnClickListener(view -> presenter.onFavButtonClicked(userEmail));
+        findViewById(R.id.fab_favorites).setOnClickListener(view -> presenter.onFavButtonClicked());
       }
     }
 
@@ -120,10 +120,9 @@ public class CategoryListActivity
   }
 
   @Override
-  public void navigateToFavoriteScreen(String emailUser) {
+  public void navigateToFavoriteScreen() {
     try {
       Intent intent = new Intent(this, FavoritesActivity.class);
-      intent.putExtra("emailUser", emailUser);
       startActivity(intent);
       Log.e(TAG, "Intent lanzado correctamente hacia favorite");
     }catch (Exception e) {

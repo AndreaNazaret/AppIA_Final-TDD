@@ -122,38 +122,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <!-- Botones Idiomas -->
-        <LinearLayout
-            android:id="@+id/languageButtons"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginHorizontal="32dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/guestButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <Button
-                android:id="@+id/btn_spanish"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:backgroundTint="#D1C4E9"
-                android:text="@string/espagnol"
-                android:textColor="#4D4A4A"
-                android:textAllCaps="false"/>
-
-            <Button
-                android:id="@+id/btn_english"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#C5CAE9"
-                android:text="@string/english"
-                android:textColor="#4D4A4A"
-                android:textAllCaps="false"/>
-        </LinearLayout>
 
         <!-- Texto "no tienes cuenta" -->
 

@@ -52,9 +52,8 @@ public interface RegisterContract {
 
     interface Model {
 
-        public void verifyUser(String email, String password, RepositoryContract.VerifyUserCallback callback);
-
-        public void addUser(String name, String apellido, String email, String password, RepositoryContract.AddUserCallback callback);
+         void verifyUser(String email, String password, RepositoryContract.VerifyUserCallback callback);
+         void addUser(String name, String apellido, String email, String password, RepositoryContract.AddUserCallback callback);
 
 
         /*

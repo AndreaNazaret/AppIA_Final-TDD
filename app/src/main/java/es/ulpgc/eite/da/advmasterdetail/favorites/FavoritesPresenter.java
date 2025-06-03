@@ -31,7 +31,7 @@ public class FavoritesPresenter implements FavoritesContract.Presenter {
 
         // call the mediator initialize the state
         state = new FavoritesState();
-
+        state.emailUser = mediator.getCategoryListState().emailUser;
 
     }
 
@@ -40,7 +40,8 @@ public class FavoritesPresenter implements FavoritesContract.Presenter {
         Log.e(TAG, "onRecreateCalled()");
 
         // call the mediator to initialize the state
-        state = mediator.getFavoritesState();
+        state = new FavoritesState();
+        fetchFavoritesData();
 
 
     }
@@ -49,13 +50,15 @@ public class FavoritesPresenter implements FavoritesContract.Presenter {
     @Override
     public void onPauseCalled() {
         Log.e(TAG, "onPauseCalled()");
-
         // save the state
         mediator.setFavoritesState(state);
     }
 
     @Override
-    public void fetchFavoritesData(String emailUser) {
+    public void fetchFavoritesData() {
+
+        String emailUser =  CatalogMediator.getInstance().getCategoryListState().emailUser;
+
         Log.e(TAG, "fetchFavoritesData en el PRESENTER INICIADO para el usuario " +emailUser);
 
         model.fetchFavoritesData(emailUser, new RepositoryContract.GetFavoritesCallback() {
@@ -74,9 +77,9 @@ public class FavoritesPresenter implements FavoritesContract.Presenter {
 
     @Override
     public void selectedFavoriteData(ProductItem item){
-
-
-       // view.get().navigateToProductDetailScreen();
+        mediator.setFavoritesState(state);
+        mediator.setProduct(item);
+        view.get().navigateToProductDetailScreen();
     }
 
 

@@ -34,14 +34,14 @@ public interface FavoritesDao {
   void updateFavorites(FavoriteItem favorites);
 
   //Borrar un favorito
-  @Delete
-  void deleteFavorite(FavoriteItem favorite);
+  @Query("DELETE FROM favorites WHERE nameTool = :toolTitle AND emailUser = :email")
+  void deleteFavorite(String email, String toolTitle);
 
   //Buscar todos los usuarios
   @Query("SELECT * FROM favorites")
   List<FavoriteItem> loadFavorites();
 
-  //Buscar un favorito por su ID
+  //Buscar un favorito por su nombre
   @Query("SELECT nameTool FROM favorites WHERE emailUser = :emailUser LIMIT 1")
   List<String> loadFavorites(String emailUser);
 
@@ -49,4 +49,10 @@ public interface FavoritesDao {
   @Query("SELECT * FROM favorites WHERE emailUser = :emailUser")
   List<FavoriteItem> loadFavoritesByUser(String emailUser);
 
+  //Buscar un favorito por emailUser y nameTool
+  @Query("SELECT * FROM favorites WHERE emailUser = :emailUser AND nameTool = :nameTool")
+  FavoriteItem findToolByNameAndUser(String emailUser, String nameTool);
+
+  @Query("SELECT * FROM favorites")
+  List<FavoriteItem> findAll();
 }

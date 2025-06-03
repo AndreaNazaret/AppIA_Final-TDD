@@ -102,12 +102,12 @@ public class LoginPresenter implements LoginContract.Presenter {
     @Override
     public void onLoginButtonClicked() {
         state.isGuest = false;
-        Log.d(TAG, "Se ha entrado como login");
+        state.emailUser = view.get().getEmailInput();
         mediator.setLoginState(state);
+
+
         String email = view.get().getEmailInput();
         String password = view.get().getPasswordInput();
-
-        Log.d(TAG, "Parámetros introducidos (Presenter): Email=" + email + ", Password=" + password);
 
         model.verifyUser(email, password, success -> {
             if (success) {
@@ -126,12 +126,7 @@ public class LoginPresenter implements LoginContract.Presenter {
         view.get().navigateToRegisterScreen();
     }
 
-    @Override
-    public void changeLanguage(String lang) {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(view.get().getContext());
-        prefs.edit().putString("app_language", lang).apply();
-        view.get().restartActivityForLanguageChange();
-    }
+
 
 
 

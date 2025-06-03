@@ -12,14 +12,36 @@ public interface RepositoryContract {
   void verifyUser(String email, String password, VerifyUserCallback callback);
 
 
-
-
   //Interfaz agregar usuario
 
   interface AddUserCallback {
     void onVerificationResultAdd(boolean success);
   }
   void addUser(String name, String apellido, String email, String password, AddUserCallback callback);
+
+
+  //Interfaz verificar si el favorito ya existe
+  interface VerifyFavoriteCallback {
+    void onVerificationResultFavorite(boolean success);
+  }
+  void verifyFavorite(String emailUser, String nameTool, VerifyFavoriteCallback callback);
+
+
+  //Interfaz agregar un favorito
+  interface AddFavoritesCallback {
+    void onVerificationResultAdd(boolean success);
+  }
+  void addFavorite(String emailUser, String nameTool, AddFavoritesCallback callback);
+
+
+  //Interfaz borrar un favorito
+  interface RemoveFavoritesCallback {
+    void onVerificationResultRemove(boolean success);
+  }
+  void removeFavorite(String emailUser, String nameTool, RemoveFavoritesCallback callback);
+
+
+
 
   //Obtener los favoritos de un usuario
   interface GetFavoritesCallback {

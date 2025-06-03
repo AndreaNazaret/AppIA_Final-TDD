@@ -37,6 +37,9 @@ public class ProductListPresenter implements ProductListContract.Presenter {
     // Log.e(TAG, "onRecreateCalled");
 
     state = mediator.getProductListState();
+    state.emailUser = mediator.getProductListState().emailUser;
+    Log.e(TAG, "EmailUser que ha llegado a ProductList: " + state.emailUser);
+
   }
 
   @Override
@@ -53,6 +56,12 @@ public class ProductListPresenter implements ProductListContract.Presenter {
 
     // set passed state
     CategoryItem category = mediator.getCategory();
+    state.emailUser = mediator.getCategoryListState().emailUser;
+
+    Log.e(TAG, "EmailUser que se ha guadado en el state de CategoryList: " + mediator.getCategoryListState().emailUser);
+
+    Log.e(TAG, "EmailUser que ha llegado a ProductList: " + state.emailUser);
+
 
     if (category != null) {
       state.category = category;
@@ -69,6 +78,7 @@ public class ProductListPresenter implements ProductListContract.Presenter {
 
   @Override
   public void selectedProductData(ProductItem item) {
+    mediator.setProductListState(state);
     mediator.setProduct(item);
     view.get().navigateToProductDetailScreen();
   }

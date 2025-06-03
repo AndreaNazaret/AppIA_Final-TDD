@@ -20,7 +20,7 @@ public interface FavoritesContract {
 
         void injectModel(Model model);
 
-        void fetchFavoritesData(String userEmail);
+        void fetchFavoritesData();
 
         void selectedFavoriteData(ProductItem item);
 

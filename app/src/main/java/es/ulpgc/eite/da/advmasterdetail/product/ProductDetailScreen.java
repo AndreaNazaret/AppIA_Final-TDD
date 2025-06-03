@@ -5,6 +5,8 @@ import androidx.fragment.app.FragmentActivity;
 import java.lang.ref.WeakReference;
 
 import es.ulpgc.eite.da.advmasterdetail.app.CatalogMediator;
+import es.ulpgc.eite.da.advmasterdetail.data.CatalogRepository;
+import es.ulpgc.eite.da.advmasterdetail.data.RepositoryContract;
 
 
 public class ProductDetailScreen {
@@ -17,10 +19,11 @@ public class ProductDetailScreen {
     CatalogMediator mediator = CatalogMediator.getInstance();
     ProductDetailContract.Presenter presenter=new ProductDetailPresenter(mediator);
 
-    ProductDetailModel model = new ProductDetailModel();
+    RepositoryContract repository = CatalogRepository.getInstance(context.get());
+    ProductDetailModel model = new ProductDetailModel(repository);
 
-    presenter.injectView(new WeakReference<>(view));
     presenter.injectModel(model);
+    presenter.injectView(new WeakReference<>(view));
     view.injectPresenter(presenter);
 
   }
