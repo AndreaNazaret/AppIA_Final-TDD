@@ -1,7 +1,10 @@
 package es.ulpgc.eite.da.advmasterdetail.register;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +30,13 @@ public class RegisterActivity
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
+
+        //Cambiamos los iconos de la barra de notificaciones ya que pusimos la barra blanca en themes
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            getWindow().setStatusBarColor(Color.WHITE);
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
+
 
         Log.e(TAG, "Register onCreate INICIADO");
 

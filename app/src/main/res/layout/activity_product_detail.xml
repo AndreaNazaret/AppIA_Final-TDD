@@ -86,16 +86,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Firma del desarrollador -->
-            <TextView
-                android:id="@+id/developer_signature"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="Aplicación desarrollada por Andrea Nazaret"
-                android:textSize="12sp"
-                android:textColor="#888888"
-                android:gravity="center" />
         </LinearLayout>
     </ScrollView>
 

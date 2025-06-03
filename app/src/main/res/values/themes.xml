@@ -15,6 +15,7 @@
         <item name="android:textColorPrimary">#FFFFFF</item>
         <item name="colorSecondary">#686386</item>
         <item name="materialButtonStyle">@style/MyNeutralButtonStyle</item>
+        <item name="android:statusBarColor">#FFFFFF</item>
     </style>
 
     <style name="MyNeutralButtonStyle" parent="Widget.MaterialComponents.Button">
@@ -32,6 +33,7 @@
         <item name="android:textColorPrimary">#FFFFFF</item>
         <item name="colorSecondary">#524A83</item>
         <item name="materialButtonStyle">@style/MyNeutralButtonStyle</item>
+        <item name="android:statusBarColor">#FFFFFF</item>
     </style>
 
     <style name="Theme.AdvMasterDetail.CategoryList" parent="Theme.AppCompat.Light">
@@ -39,6 +41,7 @@
         <item name="colorPrimaryVariant">#436C94</item>
         <item name="colorOnPrimary">#FFFFFF</item>
         <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:statusBarColor">#FFFFFF</item>
     </style>
 
     <style name="Theme.AdvMasterDetail.ToolList" parent="Theme.AppCompat.Light">
@@ -46,6 +49,7 @@
         <item name="colorPrimaryVariant">#395473</item>
         <item name="colorOnPrimary">#FFFFFF</item>
         <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:statusBarColor">#FFFFFF</item>
     </style>
 
     <style name="Theme.AdvMasterDetail.Tool" parent="Theme.AppCompat.Light">
@@ -53,6 +57,7 @@
         <item name="colorPrimaryVariant">#376D3C</item>
         <item name="colorOnPrimary">#FFFFFF</item>
         <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:statusBarColor">#FFFFFF</item>
     </style>
 
 </resources>

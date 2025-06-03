@@ -1,8 +1,11 @@
 package es.ulpgc.eite.da.advmasterdetail.categories;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,6 +39,12 @@ public class CategoryListActivity
     // Cambiar título de la barra
     if (getSupportActionBar() != null) {
       getSupportActionBar().hide();
+    }
+
+    //Cambiamos los iconos de la barra de notificaciones ya que pusimos la barra blanca en themes
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+      getWindow().setStatusBarColor(Color.WHITE);
+      getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
     }
 
     Log.e(TAG, "CategoryListActivity onCreate INICIADO");
