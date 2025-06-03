@@ -171,6 +171,57 @@
         }
 
       ]
+    },
+    {
+      "id": 6,
+      "title": "Automatización",
+      "description": "Flujos y procesos automatizados mediante IA",
+      "details": "Permiten crear flujos de trabajo inteligentes, bots y sistemas de decisión autónoma.",
+      "imageName": "automatizacion",
+      "products": [
+        {
+          "name": "Zapier",
+          "developer": "Desarrollado por Zapier Inc.",
+          "details": "Zapier permite automatizar flujos de trabajo entre diferentes aplicaciones sin necesidad de código. Utiliza IA para sugerir conexiones y optimizar tareas repetitivas en herramientas como Gmail, Slack o Trello.",
+          "imageName": "logo_zapier"
+        },
+        {
+          "name": "Make (Integromat)",
+          "developer": "Desarrollado por Celonis",
+          "details": "Make es una plataforma visual para automatizar procesos complejos con lógica condicional. La IA sugiere estructuras óptimas de flujo y mejora la integración entre APIs y servicios online.",
+          "imageName": "logo_make"
+        },
+        {
+          "name": "UiPath",
+          "developer": "Desarrollado por UiPath Inc.",
+          "details": "UiPath ofrece automatización robótica de procesos (RPA) con capacidades de IA para lectura de documentos, procesamiento de lenguaje natural y toma de decisiones autónomas en entornos empresariales.",
+          "imageName": "logo_uipath"
+        },
+        {
+          "name": "Microsoft Power Automate",
+          "developer": "Desarrollado por Microsoft",
+          "details": "Power Automate integra IA para crear flujos automatizados entre aplicaciones de Microsoft y terceros. Facilita la creación de bots y la extracción de datos desde archivos y correos.",
+          "imageName": "logo_powerautomate"
+        },
+        {
+          "name": "Fireflies.ai",
+          "developer": "Desarrollado por Fireflies.ai Inc.",
+          "details": "Fireflies.ai automatiza la toma de notas en reuniones, transcribe conversaciones en tiempo real y extrae tareas clave usando procesamiento de lenguaje natural e integración con plataformas como Zoom o Google Meet.",
+          "imageName": "logo_fireflies"
+        },
+        {
+          "name": "Tability",
+          "developer": "Desarrollado por Tability",
+          "details": "Tability automatiza el seguimiento de objetivos y resultados clave (OKRs). Utiliza IA para generar resúmenes, detectar bloqueos y recomendar prioridades a los equipos de trabajo.",
+          "imageName": "logo_tability"
+        },
+        {
+          "name": "Bardeen",
+          "developer": "Desarrollado por Bardeen Inc.",
+          "details": "Bardeen permite automatizar tareas repetitivas en el navegador usando IA. Ayuda a recolectar datos, crear reportes y ejecutar comandos con simples atajos e integraciones web.",
+          "imageName": "logo_bardeen"
+        }
+       ]
     }
   ],
 

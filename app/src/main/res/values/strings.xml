@@ -38,12 +38,15 @@
 
 
     <!-- Pantalla CategoryList -->
-    <string name="category">Category</string>
+    <string name="category">CATEGORÍAS</string>
+    <string name="texto_introduccion">Elige una categoría para explorar las capacidades de la IA </string>
     <string name="fav_error_message">Inicia sesión para acceder a favoritos</string>
 
 
     <!-- Pantalla ProductLis -->
-    <string name="tools">Tools</string>
+    <string name="tools">HERRAMIENTAS</string>
+
+    <string name="texto_introduccion_product">Selecciona la herramienta que mejor se adapte a tus necesidades</string>
 
     <string name="favorite_error_add_message">Error al añadir favorito</string>
 
@@ -56,6 +59,7 @@
 
 
     <!-- Pantalla Favoritos -->
-    <string name="fav">Favorites</string>
+    <string name="fav">FAVORITOS</string>
+    <string name="texto_introduccion_fav">Accede rápidamente a tus herramientas guardadas</string>
 
 </resources>

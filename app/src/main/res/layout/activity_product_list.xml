@@ -14,13 +14,40 @@
         android:orientation="vertical"
         android:background="@color/white">
 
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tools"
+            android:textAlignment="center"
+            android:textColor="#2B4B66"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins_bold"
+            android:paddingTop="16dp"
+            android:paddingBottom="5dp"/>
+
+        <TextView
+            android:id="@+id/tv_subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/texto_introduccion_product"
+            android:textAlignment="center"
+            android:textColor="#898080"
+            android:textSize="11sp"
+            android:paddingBottom="17dp"
+            android:fontFamily="@font/poppins_regular"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/product_recycler"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="17dp"/>
     </LinearLayout>
 
-    <!-- FAB de corazón -->
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,13 +25,13 @@
 
 
 
-
-
-    <style name="Theme.AdvMasterDetail.Register" parent="Theme.AppCompat.Light">
+    <style name="Theme.AdvMasterDetail.Register" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">#524A83</item> <!-- Morado -->
         <item name="colorPrimaryVariant">#524A83</item>
         <item name="colorOnPrimary">#FFFFFF</item>
         <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#524A83</item>
+        <item name="materialButtonStyle">@style/MyNeutralButtonStyle</item>
     </style>
 
     <style name="Theme.AdvMasterDetail.CategoryList" parent="Theme.AppCompat.Light">
@@ -49,8 +49,8 @@
     </style>
 
     <style name="Theme.AdvMasterDetail.Tool" parent="Theme.AppCompat.Light">
-        <item name="colorPrimary">#24524D</item> <!-- Azul-->
-        <item name="colorPrimaryVariant">#24524D</item>
+        <item name="colorPrimary">#224D29</item> <!-- Azul-->
+        <item name="colorPrimaryVariant">#376D3C</item>
         <item name="colorOnPrimary">#FFFFFF</item>
         <item name="android:textColorPrimary">#FFFFFF</item>
     </style>
