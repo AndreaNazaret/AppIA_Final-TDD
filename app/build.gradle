@@ -55,6 +55,11 @@ dependencies {
     testImplementation libs.core
     testImplementation libs.runner
 
+    androidTestImplementation libs.cucumber.java
+    androidTestImplementation libs.cucumber.picocontainer
+
+
+
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
     androidTestImplementation libs.uiautomator

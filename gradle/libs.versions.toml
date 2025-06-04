@@ -37,6 +37,8 @@ rules = { module = "androidx.test:rules", version.ref = "rules" }
 runner = { module = "androidx.test:runner", version.ref = "runner" }
 uiautomator = { module = "androidx.test.uiautomator:uiautomator", version.ref = "uiautomator" }
 core = { module = "androidx.test:core", version.ref = "rules" }
+cucumber_java = { module = "io.cucumber:cucumber-java", version = "7.2.3" }
+cucumber_picocontainer = { module = "io.cucumber:cucumber-picocontainer", version = "7.2.3" }
 
 
 [plugins]

@@ -41,10 +41,11 @@
     <!-- Pantalla CategoryList -->
     <string name="category">CATEGORÍAS</string>
     <string name="texto_introduccion">Elige una categoría para explorar las capacidades de la IA </string>
+
     <string name="fav_error_message">Inicia sesión para acceder a favoritos</string>
 
 
-    <!-- Pantalla ProductLis -->
+    <!-- Pantalla ProductList -->
     <string name="tools">HERRAMIENTAS</string>
 
     <string name="texto_introduccion_product">Selecciona la herramienta que mejor se adapte a tus necesidades</string>

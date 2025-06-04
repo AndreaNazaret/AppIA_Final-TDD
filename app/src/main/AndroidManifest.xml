@@ -19,6 +19,7 @@
 
         <activity
             android:name=".login.LoginActivity"
+            android:windowSoftInputMode="stateHidden"
             android:theme="@style/Theme.AdvMasterDetail.Login"
             android:exported="true">
             <intent-filter>
@@ -29,6 +30,7 @@
 
         <activity
             android:name=".register.RegisterActivity"
+            android:windowSoftInputMode="stateHidden"
             android:theme="@style/Theme.AdvMasterDetail.Register"
             android:exported="false"/>
 
