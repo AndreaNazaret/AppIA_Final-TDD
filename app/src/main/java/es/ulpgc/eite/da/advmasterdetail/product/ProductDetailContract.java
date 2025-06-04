@@ -16,6 +16,7 @@ interface ProductDetailContract {
 
     void showFavoriteAddCorrect();
 
+    void showFavErrorFavGuest();
 
     void showFavoriteRemoveError();
 
@@ -37,6 +38,8 @@ interface ProductDetailContract {
       void onPauseCalled();
 
     void onFavoriteButtonClicked();
+
+    void favNotEnableClicked();
 
   }
 

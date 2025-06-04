@@ -23,8 +23,10 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 
 import es.ulpgc.eite.da.advmasterdetail.R;
+import es.ulpgc.eite.da.advmasterdetail.app.CatalogMediator;
 import es.ulpgc.eite.da.advmasterdetail.data.ProductItem;
 import es.ulpgc.eite.da.advmasterdetail.products.ProductListActivity;
+import es.ulpgc.eite.da.advmasterdetail.products.ProductListState;
 
 
 public class ProductDetailActivity
@@ -54,13 +56,23 @@ public class ProductDetailActivity
 
     Log.e(TAG, "Favorites onCreate INICIADO");
 
+    ProductDetailScreen.configure(this);
+
     favoriteButton  =findViewById(R.id.favorite_button);
     productNameTextView=findViewById(R.id.product_name);
     productDescrTextView=findViewById(R.id.product_detail);
-    favoriteButton .setOnClickListener(view -> presenter.onFavoriteButtonClicked());
 
-    // do the setup
-    ProductDetailScreen.configure(this);
+
+    if (presenter != null) {
+      ProductListState state = CatalogMediator.getInstance().getProductListState();
+      if(state != null && state.isGuest){
+        favoriteButton.setAlpha(0.5f);
+        favoriteButton.setOnClickListener(view -> presenter.favNotEnableClicked());
+      }else{
+        favoriteButton.setOnClickListener(view -> presenter.onFavoriteButtonClicked());
+      }
+    }
+
 
     // do some work
     if(savedInstanceState == null) {
@@ -149,8 +161,11 @@ public class ProductDetailActivity
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
   }
 
-
-
+  @Override
+  public void showFavErrorFavGuest(){
+    String message = getString(R.string.fav_error_message);
+    Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+  }
 
   @Override
   public void injectPresenter(ProductDetailContract.Presenter presenter) {

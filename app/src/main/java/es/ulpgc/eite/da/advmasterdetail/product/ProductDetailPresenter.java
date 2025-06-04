@@ -171,6 +171,13 @@ public class ProductDetailPresenter implements ProductDetailContract.Presenter {
   }
 
   @Override
+  public void favNotEnableClicked(){
+    new android.os.Handler(android.os.Looper.getMainLooper()).post(() ->
+            view.get().showFavErrorFavGuest()
+    );
+  }
+
+  @Override
   public void injectView(WeakReference<ProductDetailContract.View> view) {
     this.view = view;
   }

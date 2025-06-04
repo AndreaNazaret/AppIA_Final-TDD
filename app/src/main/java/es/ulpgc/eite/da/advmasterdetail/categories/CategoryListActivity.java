@@ -55,7 +55,7 @@ public class CategoryListActivity
     // do some work
     initCategoryListContainer();
 
-    String userEmail = getIntent().getStringExtra("emailUser");
+
 
     if (presenter != null) {
       LoginState state = CatalogMediator.getInstance().getLoginState();

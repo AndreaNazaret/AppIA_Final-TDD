@@ -31,7 +31,6 @@ public class CategoryListPresenter implements CategoryListContract.Presenter {
 
     state = new CategoryListState(); //Crea el estado
 
-    // Copiar estado del login
 
 
   }
@@ -72,8 +71,6 @@ public class CategoryListPresenter implements CategoryListContract.Presenter {
 
   @Override
   public void onFavButtonClicked (){
-    state.emailUser= mediator.getLoginState().emailUser;
-    mediator.setCategoryListState(state);
     Log.d(TAG, "Usuario que se le pasará a FavActivity" + state.emailUser);
     view.get().navigateToFavoriteScreen();
   }

@@ -7,4 +7,6 @@ public class ProductListState extends ProductListViewModel {
     public CategoryItem category;
 
     public String emailUser;
+
+    public boolean isGuest;
 }

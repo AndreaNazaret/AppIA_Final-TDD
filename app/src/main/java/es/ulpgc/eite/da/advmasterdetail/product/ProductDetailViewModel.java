@@ -8,5 +8,7 @@ public class ProductDetailViewModel  {
   public ProductItem product;
 
   public boolean isFavorite;
+
+  public boolean isGuest;
 }
 

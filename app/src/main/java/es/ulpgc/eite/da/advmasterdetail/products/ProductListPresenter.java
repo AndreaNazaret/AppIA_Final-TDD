@@ -57,10 +57,11 @@ public class ProductListPresenter implements ProductListContract.Presenter {
     // set passed state
     CategoryItem category = mediator.getCategory();
     state.emailUser = mediator.getCategoryListState().emailUser;
+    state.isGuest = mediator.getCategoryListState().isGuest;
 
-    Log.e(TAG, "EmailUser que se ha guadado en el state de CategoryList: " + mediator.getCategoryListState().emailUser);
+    //Log.e(TAG, "EmailUser que se ha guadado en el state de CategoryList: " + mediator.getCategoryListState().emailUser);
 
-    Log.e(TAG, "EmailUser que ha llegado a ProductList: " + state.emailUser);
+    Log.e(TAG, "Datos que han llegado a ProductList: " + state.emailUser + "isGuest: " + state.isGuest);
 
 
     if (category != null) {
@@ -78,7 +79,6 @@ public class ProductListPresenter implements ProductListContract.Presenter {
 
   @Override
   public void selectedProductData(ProductItem item) {
-    mediator.setProductListState(state);
     mediator.setProduct(item);
     view.get().navigateToProductDetailScreen();
   }
